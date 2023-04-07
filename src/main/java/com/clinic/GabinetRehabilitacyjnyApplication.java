@@ -1,6 +1,7 @@
 package com.clinic;
 
-import com.clinic.dbRepository.User;
+import com.clinic.dbRepository.UserRepository;
+import com.clinic.dbTables.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,10 +16,4 @@ public class GabinetRehabilitacyjnyApplication {
         SpringApplication.run(GabinetRehabilitacyjnyApplication.class, args);
     }
 
-    @GetMapping("/test")
-    public List<String> hello(){
-        User user = new User();
-        user.setId(1);
-        return List.of("Hello", "World");
-    }
 }
