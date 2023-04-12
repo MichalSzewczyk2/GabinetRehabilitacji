@@ -11,6 +11,6 @@ public class WorkSchedule {
     private int doctorId;
     private LocalDate date;
     private LocalTime startTime;
-    private LocalDate endTime;
+    private LocalTime endTime;
 
 }

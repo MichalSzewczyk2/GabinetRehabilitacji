@@ -1,29 +1,26 @@
 package com.clinic.dbTables;
 
 public enum UserType {
-    CLIENT,
-    ADMIN,
-    SECRETARY,
-    MASSEUR,
-    PHYSIOTHERAPIST;
+    CLIENT("client"),
+    ADMIN("admin"),
+    SECRETARY("secretary"),
+    MASSEUR("masseur"),
+    PHYSIOTHERAPIST("physiotherapist"),;
 
+
+    UserType(String client) {
+    }
 
     public static UserType setUserType(String type) {
 
-        switch (type) {
-            case "client":
-                return UserType.CLIENT;
-            case "admin":
-                return UserType.ADMIN;
-            case "secretary":
-                return UserType.SECRETARY;
-            case "masseur":
-                return UserType.MASSEUR;
-            case "physiotherapist":
-                return UserType.PHYSIOTHERAPIST;
-            default:
-                return null;
-        }
+        return switch (type) {
+            case "client" -> UserType.CLIENT;
+            case "admin" -> UserType.ADMIN;
+            case "secretary" -> UserType.SECRETARY;
+            case "masseur" -> UserType.MASSEUR;
+            case "physiotherapist" -> UserType.PHYSIOTHERAPIST;
+            default -> null;
+        };
 
     }
 }

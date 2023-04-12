@@ -16,4 +16,9 @@ public class GabinetRehabilitacyjnyApplication {
         SpringApplication.run(GabinetRehabilitacyjnyApplication.class, args);
     }
 
+    @GetMapping("/")
+    public String index(){
+        return "index";
+    }
+
 }
