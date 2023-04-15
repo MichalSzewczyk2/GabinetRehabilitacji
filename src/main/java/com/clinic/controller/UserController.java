@@ -26,6 +26,6 @@ public class UserController {
 
     @GetMapping("/user1")
     public User getUserById(){
-        return userRepository.getUserById(1);
+        return userRepository.getById(1);
     }
 }
