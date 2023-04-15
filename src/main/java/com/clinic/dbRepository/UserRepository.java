@@ -1,7 +1,7 @@
 package com.clinic.dbRepository;
 
 import com.clinic.dbTables.User;
-import com.clinic.dbTables.UserListRowMapper;
+import com.clinic.helpers.UserListRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -23,8 +23,7 @@ public class UserRepository {
             throw new IllegalArgumentException("Id must be greater than 0");
         }
         return jdbcTemplate.queryForObject("SELECT * FROM users WHERE user_id = ?",
-                new Object[] { id }, (rs, rowNum) -> User.getUserFromResultSet(rs)
-        );
+                new Object[] { id }, (rs, rowNum) -> User.getUserFromResultSet(rs));
     }
 
     public void add(User user){

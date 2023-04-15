@@ -1,21 +1,21 @@
-package com.clinic.dbTables;
+package com.clinic.helpers;
 
+import com.clinic.dbTables.User;
+import lombok.SneakyThrows;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserListRowMapper implements RowMapper<List<User>> {
+    @SneakyThrows
     @Override
-    public List<User> mapRow(ResultSet rs, int rowNum) throws SQLException {
+    public List<User> mapRow(ResultSet rs, int rowNum){
         List<User> users = new ArrayList<>();
-        User firstUser = User.getUserFromResultSet(rs);
-        users.add(firstUser);
+        users.add(User.getUserFromResultSet(rs));
         while (rs.next()) {
-            User newUser = User.getUserFromResultSet(rs);
-            users.add(newUser);
+            users.add(User.getUserFromResultSet(rs));
         }
         return users;
     }
