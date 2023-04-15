@@ -11,11 +11,11 @@ import java.util.List;
 @RestController
 public class ClinicController {
 
-    @Autowired
-    ClinicRepository clinicRepository;
+  @Autowired
+  ClinicRepository clinicRepository;
 
-    @GetMapping("/clinics")
-    public List<Clinic> getAll(){
-        return clinicRepository.getAll();
-    }
+  @GetMapping("/clinics")
+  public List<Clinic> getAll() {
+    return clinicRepository.getAll();
+  }
 }

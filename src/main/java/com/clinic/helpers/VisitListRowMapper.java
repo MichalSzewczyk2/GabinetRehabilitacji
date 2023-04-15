@@ -10,16 +10,16 @@ import java.util.List;
 
 public class VisitListRowMapper implements RowMapper<List<Visit>> {
 
-    @SneakyThrows
-    @Override
-    public List<Visit> mapRow(ResultSet rs, int rowNum){
-        List<Visit> result = new ArrayList<>();
-        result.add(Visit.getVisitFromResultSet(rs));
-        while(rs.next()){
-            result.add(Visit.getVisitFromResultSet(rs));
-        }
-        return result;
+  @SneakyThrows
+  @Override
+  public List<Visit> mapRow(ResultSet rs, int rowNum) {
+    List<Visit> result = new ArrayList<>();
+    result.add(Visit.getVisitFromResultSet(rs));
+    while (rs.next()) {
+      result.add(Visit.getVisitFromResultSet(rs));
     }
+    return result;
+  }
 
 
 }

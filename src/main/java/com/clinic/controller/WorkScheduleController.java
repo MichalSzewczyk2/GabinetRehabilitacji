@@ -1,12 +1,12 @@
 package com.clinic.controller;
 
-import com.clinic.dbRepository.MedicineRepository;
+import com.clinic.dbRepository.WorkScheduleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class MedicineController {
+public class WorkScheduleController {
 
   @Autowired
-  MedicineRepository medicineRepository;
+  WorkScheduleRepository workScheduleRepository;
 }

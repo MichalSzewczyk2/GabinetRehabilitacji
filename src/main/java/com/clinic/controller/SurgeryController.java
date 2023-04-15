@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class SurgeryController {
 
-    @Autowired
-    SurgeryRepository surgeryRepository;
+  @Autowired
+  SurgeryRepository surgeryRepository;
 
 }

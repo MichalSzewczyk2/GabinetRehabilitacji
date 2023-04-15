@@ -11,21 +11,21 @@ import java.util.List;
 @RestController
 public class UserController {
 
-    @Autowired
-    UserRepository userRepository;
+  @Autowired
+  UserRepository userRepository;
 
-    @GetMapping("/test")
-    public int test(){
-        return 1;
-    }
+  @GetMapping("/test")
+  public int test() {
+    return 1;
+  }
 
-    @GetMapping("/users")
-    public List<User> getAll(){
-        return userRepository.getAll();
-    }
+  @GetMapping("/users")
+  public List<User> getAll() {
+    return userRepository.getAll();
+  }
 
-    @GetMapping("/user1")
-    public User getUserById(){
-        return userRepository.getById(1);
-    }
+  @GetMapping("/user1")
+  public User getUserById() {
+    return userRepository.getById(1);
+  }
 }
