@@ -28,4 +28,20 @@ public class UserController {
   public User getUserById() {
     return userRepository.getById(1);
   }
+
+  public User getUserByEmail(String email) {
+    return userRepository.getByEmail(email);
+  }
+
+  public User getUserByUsername(String username) {
+    return userRepository.getByUsername(username);
+  }
+
+  public User addUser(User user) {
+    userRepository.add(user);
+    if(userRepository.getByEmail(user.getEmail()) != null){
+      return user;
+    }
+    return null;
+  }
 }

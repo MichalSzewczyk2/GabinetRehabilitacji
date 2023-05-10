@@ -3,11 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <title>SignIn</title>
-    <link th:href="@{/styles/mainPage.css}" rel="stylesheet" />
+    <link th:href="@{/styles/mainPage.css}" rel="stylesheet"/>
 </head>
 <body>
 <div class="topnav">
-  <a href="?page=home">Home</a>
+    <a th:href="@{/main}" >Home</a>
+    <a style="float:right" th:href="@{/logIn}" >Log In</a>
 </div>
+<h1 class="centerTitle">Sign In</h1>
+<div class="signInForm">
+    <form action="/signIn" th:object="${user}" method="POST" enctype="utf8">
+        <div class="form">
+            <label for="firstName">First Name</label>
+            <input class="input" id="firstName" th:field="*{firstName}"/>
+            <p th:each="error: ${#fields.errors('firstName')}"
+               th:text="${error}">Validation error</p>
+        </div>
+        <div class="form">
+            <label for="lastName">Last Name</label>
+            <input class="input" id="lastName" th:field="*{lastName}"/>
+            <p th:each="error : ${#fields.errors('lastName')}"
+               th:text="${error}">Validation error</p>
+        </div>
+        <div class="form">
+            <label for="email">Email</label>
+            <input class="input" id="email" type="email" th:field="*{email}"/>
+            <p th:each="error : ${#fields.errors('email')}"
+               th:text="${error}">Validation error</p>
+        </div>
+        <div class="form">
+            <label for="username">Username</label>
+            <input class="input" id="username" th:field="*{username}"/>
+            <p th:each="error : ${#fields.errors('username')}"
+               th:text="${error}">Validation error</p>
+        </div>
+        <div class="form">
+            <label for="address">Address</label>
+            <input class="input" id="address" th:field="*{address}"/>
+            <p th:each="error : ${#fields.errors('address')}"
+               th:text="${error}">Validation error</p>
+        </div>
+        <div class="form">
+            <label for="phoneNumber">Phone Number</label>
+            <input class="input" id="phoneNumber" th:field="*{phoneNumber}"/>
+            <p th:each="error : ${#fields.errors('phoneNumber')}"
+               th:text="${error}">Validation error</p>
+        </div>
+        <div class="form">
+            <label for="birthDate">Birth Date</label>
+            <input class="input" id="birthDate" type="date" th:field="*{birthDate}"/>
+            <p th:each="error : ${#fields.errors('birthDate')}"
+               th:text="${error}">Validation error</p>
+        </div>
+        <div class="form">
+            <label for="password">Password</label>
+            <input class="input" id="password" type="password" th:field="*{password}"/>
+            <p th:each="error : ${#fields.errors('password')}"
+               th:text="${error}">Validation error</p>
+        </div>
+        <div class="form">
+            <label for="confirm">Confirm password</label>
+            <input class="input" id="confirm" type="password" th:field="*{matchingPassword}"/>
+        </div>
+        <div class="buttons">
+            <button type="submit">submit</button>
+        </div>
+    </form>
+</div>
+
+<div class="footer">
+    <div class="socialMedia">
+        tekst
+    </div>
+    <div class="copyRight">
+        <p>Politechnika Krakowska © 2023</p>
+    </div>
+</div>
+
 </body>
 </html>
+
+
+
+

@@ -10,11 +10,11 @@
     <a class="active" href="#home">Home</a>
     <a href="?page=contact">Contact</a>
     <a href="?page=about">About</a>
-    <a style="float:right" id="signIn">Sign in</a>
+    <a style="float:right" th:href="@{/signIn}" id="signIn">Sign in</a>
 </div>
 <div id="middle">
     <img th:src="@{/images/banner.jpg}" alt="banner" class="banner"/>
-    <div id="mainButtons">
+    <div class="buttons">
         <a href="?page=strona1">strona1</a>
         <a href="?page=strona2">strona2</a>
     </div>
@@ -30,13 +30,15 @@
             Praesent mattis at sem ac maximus. Nullam tincidunt arcu a purus cursus, nec finibus leo dictum. Integer pellentesque eros urna, in malesuada dolor dictum vel. Suspendisse nulla tellus, commodo vel vulputate ut, imperdiet non sapien. Donec finibus malesuada.
         </div>
     </div>
+
+</div>
+<div class="footer">
     <div class="socialMedia">
         tekst
     </div>
-</div>
-
-<div id="footer">
-    <p>Politechnika Krakowska © 2023</p>
+    <div class="copyRight">
+        <p>Politechnika Krakowska © 2023</p>
+    </div>
 </div>
 </body>
 </html>
