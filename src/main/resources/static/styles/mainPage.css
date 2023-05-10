@@ -1,5 +1,9 @@
 @charset "UTF-8";
 body {
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    min-height:100vh;
     margin: 0;
 }
 
@@ -14,22 +18,28 @@ body {
     justify-content: center;
 }
 
-#footer {
+.footer {
+    margin-top: 5rem;
     display: flex;
+    flex-direction: column;
     align-content: center;
     justify-content: center;
     background-color: #00C9FF;
     color: #FFFFFF;
 }
 
-#mainButtons {
-    display: inline-block;
+.copyRight {
+    text-align: center;
+}
+
+.buttons {
+    display: flex;
     align-content: center;
     justify-content: center;
     text-align: center;
 }
 
-#mainButtons a {
+.buttons a {
     align-items: center;
     background-color: #FFFFFF;
     border: 1px solid rgba(0, 0, 0, 0.1);
@@ -39,12 +49,11 @@ body {
     color: rgba(0, 0, 0, 0.85);
     cursor: pointer;
     display: inline-flex;
-    font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 16px;
     font-weight: 600;
     justify-content: center;
     line-height: 1.25;
-    margin: 0;
     min-height: 3rem;
     padding: calc(.875rem - 1px) calc(1.5rem - 1px);
     position: relative;
@@ -55,16 +64,17 @@ body {
     touch-action: manipulation;
     vertical-align: baseline;
     width: 10rem;
+    margin: 1rem;
 }
 
-#mainButtons a:hover,
-#mainButtons a:focus {
+.buttons a:hover,
+.buttons a:focus {
     border-color: rgba(0, 0, 0, 0.15);
     box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
     color: rgba(0, 0, 0, 0.65);
 }
 
-#mainButtons a:hover{
+.buttons a:hover {
     transform: translateY(-1px);
 }
 
@@ -121,7 +131,43 @@ body {
     background-color: #00C9FF;
     color: white;
 }
+
 .signIn {
     background-color: #00C9FF;
     color: white;
+}
+
+.signInForm {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.centerTitle {
+    font-size: 3rem;
+    color: #00C9FF;
+    text-align: center;
+    margin-top: 10rem;
+}
+
+.form {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: grid;
+}
+
+.input {
+    border: none;
+    padding: 5px;
+    margin-top: 1rem;
+    border-bottom: 1px solid #00C9FF;
+}
+
+.input:focus-visible{
+    outline: none;
+    border-bottom: 1px solid #25fd1b;
+    transition-duration: 0.5s;
 }

@@ -26,6 +26,10 @@ public class UserRepository {
       new Object[]{id}, (rs, rowNum) -> User.getUserFromResultSet(rs));
   }
 
+  public User getByEmail(String email) {
+    return jdbcTemplate.queryForObject("SELECT * FROM users WHERE email = ?", new Object[]{email}, (rs, rowNum) -> User.getUserFromResultSet(rs));
+  }
+
   public void add(User user) {
     jdbcTemplate.update("INSERT INTO users (name, surname, address, birth_date, phone_number, mail, user_type, login, password) VALUES (?,?,?,?,?,?,?,?,?)",
       user.getName(), user.getSurname(), user.getAddress(), user.getBirthDate(), user.getPhoneNumber(), user.getEmail(), user.getUserType(), user.getUsername(), user.getPassword());
