@@ -2,6 +2,7 @@ package com.clinic.dbRepository;
 
 import com.clinic.dbTables.User;
 import com.clinic.helpers.UserListRowMapper;
+import com.clinic.helpers.UserRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -27,17 +28,38 @@ public class UserRepository {
   }
 
   public User getByEmail(String email) {
-    return jdbcTemplate.queryForObject("SELECT * FROM users WHERE email = ?", new Object[]{email}, (rs, rowNum) -> User.getUserFromResultSet(rs));
+
+    List<User> user =  jdbcTemplate.query(("SELECT * FROM users WHERE mail = '" + email + "';"), new UserRowMapper());
+    if(user.isEmpty()){
+      return null;
+    }
+    else{
+      return user.get(0);
+    }
+
+    //return jdbcTemplate.queryForObject("SELECT * FROM users WHERE mail = ?", new Object[]{email}, (rs, rowNum) -> User.getUserFromResultSet(rs));
+  }
+
+  public User getByUsername(String username) {
+
+    List<User> user = jdbcTemplate.query(("SELECT * FROM users WHERE login = '" + username + "';"), new UserRowMapper());
+    if(user.isEmpty()){
+      return null;
+    }
+    else{
+      return user.get(0);
+    }
+    //return jdbcTemplate.queryForObject("SELECT * FROM users WHERE login = ?", new Object[]{username}, (rs, rowNum) -> User.getUserFromResultSet(rs));
   }
 
   public void add(User user) {
     jdbcTemplate.update("INSERT INTO users (name, surname, address, birth_date, phone_number, mail, user_type, login, password) VALUES (?,?,?,?,?,?,?,?,?)",
-      user.getName(), user.getSurname(), user.getAddress(), user.getBirthDate(), user.getPhoneNumber(), user.getEmail(), user.getUserType(), user.getUsername(), user.getPassword());
+      user.getName(), user.getSurname(), user.getAddress(), user.getBirthDate(), user.getPhoneNumber(), user.getEmail(), user.getStringType(), user.getUsername(), user.getPassword());
   }
 
   public void update(User user) {
     jdbcTemplate.update("UPDATE users SET name = ?, surname = ?, address = ?, birth_date = ?, phone_number = ?, mail = ?, user_type = ?, login = ?, password = ? WHERE user_id = ?",
-      user.getName(), user.getSurname(), user.getAddress(), user.getBirthDate(), user.getPhoneNumber(), user.getEmail(), user.getUserType(), user.getUsername(), user.getPassword(), user.getId());
+      user.getName(), user.getSurname(), user.getAddress(), user.getBirthDate(), user.getPhoneNumber(), user.getEmail(), user.getStringType(), user.getUsername(), user.getPassword(), user.getId());
   }
 
   public void delete(int id) {

@@ -2,6 +2,7 @@ package com.clinic.helpers;
 
 import com.clinic.controller.UserController;
 import com.clinic.dbTables.User;
+import com.clinic.dbTables.UserType;
 import com.clinic.exceptions.UserAlreadyExistException;
 import com.clinic.interfaces.IUserService;
 import jakarta.transaction.Transactional;
@@ -11,8 +12,9 @@ import org.springframework.stereotype.Service;
 @Service
 @Transactional
 public class UserService implements IUserService {
+
   @Autowired
-  private UserController controller;
+  UserController controller;
 
   @Override
   public User registerNewUserAccount(UserDTO userDto) throws UserAlreadyExistException {
@@ -20,17 +22,30 @@ public class UserService implements IUserService {
       throw new UserAlreadyExistException("There is an account with that email address: "
         + userDto.getEmail());
     }
-      User user = new User();
-//    user.setName(userDto.getFirstName());
-//    user.setSurname(userDto.getLastName());
-//    user.setPassword(userDto.getPassword());
-//    user.setEmail(userDto.getEmail());
-//    user.setRoles(Arrays.asList("ROLE_USER"));
+    if (usernameExists(userDto.getUsername())) {
+      throw new UserAlreadyExistException("There is an account with that email address: "
+        + userDto.getUsername());
+    }
+    User user = new User();
+    user.setName(userDto.getFirstName());
+    user.setSurname(userDto.getLastName());
+    user.setAddress(userDto.getAddress());
+    user.setBirthDate(userDto.getBirthDate());
+    user.setPhoneNumber(Integer.parseInt(userDto.getPhoneNumber()));
+    user.setEmail(userDto.getEmail());
+    user.setUserType(UserType.CLIENT);
+    user.setUsername(userDto.getUsername());
+    user.setPassword(userDto.getPassword());
 
-    return user;
-    // the rest of the registration operation
+
+    return controller.addUser(user);
   }
+
   private boolean emailExists(String email) {
     return controller.getUserByEmail(email) != null;
+  }
+
+  private boolean usernameExists(String username) {
+    return controller.getUserByUsername(username) != null;
   }
 }

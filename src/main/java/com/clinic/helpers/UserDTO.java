@@ -32,7 +32,7 @@ public class UserDTO {
 
   @NotNull
   @ValidPhoneNumber
-  private int phoneNumber;
+  private String phoneNumber;
 
   @NotNull
   private String username;
@@ -94,11 +94,11 @@ public class UserDTO {
     this.birthDate = birthDate;
   }
 
-  public int getPhoneNumber() {
+  public String getPhoneNumber() {
     return phoneNumber;
   }
 
-  public void setPhoneNumber(int phoneNumber) {
+  public void setPhoneNumber(String phoneNumber) {
     this.phoneNumber = phoneNumber;
   }
 

@@ -25,6 +25,17 @@ public class User {
   private String username;
   private String password;
 
+
+  public String getStringType(){
+    return switch (this.userType) {
+      case CLIENT -> "client";
+      case ADMIN -> "admin";
+      case SECRETARY -> "secretary";
+      case MASSEUR -> "masseur";
+      case PHYSIOTHERAPIST -> "physiotherapist";
+    };
+  }
+
   @NotNull
   @SneakyThrows
   public static User getUserFromResultSet(ResultSet rs) {
