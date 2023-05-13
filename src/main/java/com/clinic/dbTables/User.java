@@ -8,6 +8,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.sql.ResultSet;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -34,6 +36,12 @@ public class User {
       case MASSEUR -> "masseur";
       case PHYSIOTHERAPIST -> "physiotherapist";
     };
+  }
+
+  public List<String> getRoles(){
+    List<String> list = new ArrayList<>();
+    list.add(getStringType());
+    return list;
   }
 
   @NotNull

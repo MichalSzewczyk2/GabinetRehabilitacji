@@ -17,7 +17,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class signInController {
+public class SignInController {
 
   @Autowired
   UserService userService;

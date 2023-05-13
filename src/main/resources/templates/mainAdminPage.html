@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="EN">
+<head>
+  <meta charset="UTF-8">
+  <title>MainPage</title>
+  <link th:href="@{/styles/mainPage.css}" rel="stylesheet" />
+</head>
+<body>
+<div class="topnav">
+  <a href="#home">Home</a>
+  <a href="?page=contact">Contact</a>
+  <a href="?page=about">About</a>
+  <a class="active" style="float:right" th:href="@{/logout}" >Log out</a>
+</div>
+<div class="grid-container">
+  <div class="grid-item">1</div>
+  <div class="grid-item">2</div>
+  <div class="grid-item">3</div>
+  <div class="grid-item">4</div>
+  <div class="grid-item">5</div>
+  <div class="grid-item">6</div>
+  <div class="grid-item">7</div>
+  <div class="grid-item">8</div>
+  <div class="grid-item">9</div>
+</div>
+
+</div>
+<div class="footer">
+  <div class="socialMedia">
+    tekst
+  </div>
+  <div class="copyRight">
+    <p>Politechnika Krakowska © 2023</p>
+  </div>
+</div>
+</body>
+</html>

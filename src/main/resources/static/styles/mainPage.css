@@ -19,7 +19,7 @@ body {
 }
 
 .footer {
-    margin-top: 5rem;
+    margin-top: 2rem;
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -173,3 +173,11 @@ body {
     border-bottom: 1px solid #25fd1b;
     transition-duration: 0.5s;
 }
+
+.grid-container {
+    display: grid;
+}
+
+.grid-container {
+    display: inline-grid;
+}s
