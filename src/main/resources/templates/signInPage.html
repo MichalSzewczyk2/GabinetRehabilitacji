@@ -12,7 +12,7 @@
 </div>
 <h1 class="centerTitle">Sign In</h1>
 <div class="signInForm">
-    <form action="/signIn" th:object="${user}" method="POST" enctype="utf8">
+    <form action="/signIn" th:object="${user}" method="POST" enctype="text/plain">
         <div class="form">
             <label for="firstName">First Name</label>
             <input class="input" id="firstName" th:field="*{firstName}"/>

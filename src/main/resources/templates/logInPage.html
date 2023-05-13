@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LogIn</title>
+    <link th:href="@{/styles/mainPage.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="topnav">
+    <a th:href="@{/main}" >Home</a>
+    <a style="float:right" th:href="@{/signIn}" >Sign In</a>
+</div>
+<h1 class="centerTitle">Log In</h1>
+<div class="signInForm">
+    <form name="f" action="/logIn" method="POST">
+        <div class="form">
+            <label for="login">Login</label>
+            <input class="input" type="text" id="login" name="username"/>
+        </div>
+        <div class="form">
+            <label for="password">Password</label>
+            <input class="input" type="password" id="password" name="password"/>
+        </div>
+        <div class="buttons">
+            <input name="submit" type="submit" value="submit">
+        </div>
+    </form>
+</div>
+<div class="footer">
+    <div class="socialMedia">
+        tekst
+    </div>
+    <div class="copyRight">
+        <p>Politechnika Krakowska © 2023</p>
+    </div>
+</div>
+
+</body>
+</html>
