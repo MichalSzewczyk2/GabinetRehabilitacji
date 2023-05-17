@@ -1,6 +1,5 @@
 package com.clinic.security;
 
-import com.clinic.helpers.SecSecurityConfig;
 import jakarta.servlet.ServletContext;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;

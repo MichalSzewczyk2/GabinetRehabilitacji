@@ -38,6 +38,13 @@ public class User {
     };
   }
 
+  public void setUserType(UserType userType){
+    this.userType = userType;
+  }
+  public void setUserType(String type){
+      userType = UserType.setUserType(type);
+  }
+
   public List<String> getRoles(){
     List<String> list = new ArrayList<>();
     list.add(getStringType());

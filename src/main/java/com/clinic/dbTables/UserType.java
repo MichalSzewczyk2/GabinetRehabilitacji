@@ -8,8 +8,14 @@ public enum UserType {
   PHYSIOTHERAPIST("physiotherapist"),
   ;
 
+  private final String displayValue;
 
-  UserType(String client) {
+  private UserType(String displayValue) {
+    this.displayValue = displayValue;
+  }
+
+  public String getDisplayValue() {
+    return displayValue;
   }
 
   public static UserType setUserType(String type) {
