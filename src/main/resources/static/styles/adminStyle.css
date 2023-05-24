@@ -160,7 +160,10 @@ body {
 .form {
     font-size: 2rem;
     margin-bottom: 1rem;
-    display: grid;
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
 }
 
 .selectStyle {
@@ -201,4 +204,8 @@ body {
 
 .userTable tr:hover{
     background-color: #9b9b9b;
+}
+
+.chooseUser {
+    margin-top: 2rem;
 }

@@ -1,22 +1,14 @@
 package com.clinic.dbTables;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public enum UserType {
-  CLIENT("client"),
-  ADMIN("admin"),
-  SECRETARY("secretary"),
-  MASSEUR("masseur"),
-  PHYSIOTHERAPIST("physiotherapist"),
-  ;
-
-  private final String displayValue;
-
-  private UserType(String displayValue) {
-    this.displayValue = displayValue;
-  }
-
-  public String getDisplayValue() {
-    return displayValue;
-  }
+  CLIENT,
+  ADMIN,
+  SECRETARY,
+  MASSEUR,
+  PHYSIOTHERAPIST;
 
   public static UserType setUserType(String type) {
 
@@ -28,6 +20,15 @@ public enum UserType {
       case "physiotherapist" -> UserType.PHYSIOTHERAPIST;
       default -> null;
     };
+  }
 
+  public static List<String> getList(){
+    List<String> list = new ArrayList<>();
+    list.add("client");
+    list.add("admin");
+    list.add("secretary");
+    list.add("masseur");
+    list.add("physiotherapist");
+    return list;
   }
 }

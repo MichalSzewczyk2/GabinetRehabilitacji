@@ -59,6 +59,7 @@ public class UserController {
     }
     return null;
   }
+
   public User addUser(User user) {
     userRepository.add(user);
     if(userRepository.getByEmail(user.getEmail()) != null){

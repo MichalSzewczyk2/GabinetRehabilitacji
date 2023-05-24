@@ -33,16 +33,14 @@
             <div class="form">
                 <label for="role">Role</label>
                 <select class="selectStyle" id="role" th:field="*{userType}">
-<!--                    <option th:value="client" th:selected="client == ${user.userType} ? true : false">Client</option>-->
-<!--                    <option th:value="admin" th:selected="admin == ${user.userType} ? true : false">Admin</option>-->
-<!--                    <option th:value="secretary" th:selected="secretary == ${user.userType} ? true : false">Secretary-->
-<!--                    </option>-->
-<!--                    <option th:value="masseur" th:selected="masseur == ${user.userType} ? true : false">Masseur</option>-->
-<!--                    <option th:value="physiotherapist" th:selected="physiotherapist == ${user.userType} ? true : false">-->
-<!--                        Physiotherapist-->
-<!--                    </option>-->
-<!--                    <option th:each="userType : ${com.clinic.dbTables.UserType}.values()}"-->
-<!--                            th:value="${userType}" th:text="${userType.displayValue}"></option>-->
+                    <option th:value="client" th:selected="client == ${user.userType} ? true : false">Client</option>
+                    <option th:value="admin" th:selected="admin == ${user.userType} ? true : false">Admin</option>
+                    <option th:value="secretary" th:selected="secretary == ${user.userType} ? true : false">Secretary
+                    </option>
+                    <option th:value="masseur" th:selected="masseur == ${user.userType} ? true : false">Masseur</option>
+                    <option th:value="physiotherapist" th:selected="physiotherapist == ${user.userType} ? true : false">
+                        Physiotherapist
+                    </option>
                 </select>
             </div>
 

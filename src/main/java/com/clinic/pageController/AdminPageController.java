@@ -4,7 +4,6 @@ import com.clinic.controller.UserController;
 import com.clinic.dbTables.User;
 import com.clinic.helpers.StringDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,6 +32,13 @@ public class AdminPageController {
   @GetMapping("/admin/employees")
   public String getEmployeesPage(WebRequest request, Model model){
     return "manageEmployeesPage";
+  }
+
+  @GetMapping("/admin/visits")
+  public String getVisitsPage(WebRequest request,Model model){
+    StringDTO username = new StringDTO();
+    model.addAttribute("username", username);
+    return "manageVisitsPage";
   }
 
   @GetMapping("/admin/user/change/{id}")

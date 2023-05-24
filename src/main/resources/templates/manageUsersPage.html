@@ -35,6 +35,7 @@
             <td th:text="${user.email}"></td>
             <td class="buttons">
                 <a th:href="@{/admin/user/change/{id}(id=${user.id})}">Change</a>
+                <a class="deleteB" th:href="@{/admin/user/deleteUser/{id}(id=${user.id})}">Delete</a>
             </td>
         </tr>
     </table>
