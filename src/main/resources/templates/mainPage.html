@@ -10,10 +10,11 @@
     <a href="#home">Home</a>
     <a href="?page=contact">Contact</a>
     <a href="?page=about">About</a>
-    <a class="active" style="float:right" th:href="@{/logIn}" >Log in</a>
-    <a style="float:right" th:href="@{/signIn}" id="signIn">Sign in</a>
+    <a th:if="${role == 'anonymousUser'}" class="active" style="float:right" th:href="@{/logIn}" >Log in</a>
+    <a th:if="${role == 'anonymousUser'}" style="float:right" th:href="@{/signIn}" id="signIn">Sign in</a>
+    <a th:unless="${role == 'anonymousUser'}" class="active" style="float:right" th:href="@{/logout}" >Log out</a>
 </div>
-<div id="middle">
+<div class="middle">
     <img th:src="@{/images/banner.jpg}" alt="banner" class="banner"/>
     <div class="buttons">
         <a href="?page=strona1">strona1</a>

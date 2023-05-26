@@ -1,7 +1,6 @@
 @charset "UTF-8";
 body {
     text-align:center;
-    display:flex;
     flex-direction:column;
     min-height:100vh;
     margin: 0;
@@ -18,13 +17,16 @@ body {
     justify-content: center;
 }
 
-.footer {
+.footerEmpty {
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
     margin-top: 2rem;
     display: flex;
     flex-direction: column;
     align-content: center;
     justify-content: center;
-    background-color: #00C9FF;
+    background-color: #be1b2d;
     color: #FFFFFF;
 }
 
@@ -40,8 +42,7 @@ body {
 }
 
 
-.buttons a,
-.buttons button{
+.buttons a, button, input{
     align-items: center;
     background-color: #FFFFFF;
     border: 1px solid rgba(0, 0, 0, 0.1);
@@ -69,21 +70,21 @@ body {
     margin: 1rem;
 }
 
-.buttons a:hover,
-.buttons a:focus {
+.buttons a:hover, button:hover, input:hover,
+.buttons a:focus, button:focus, input:focus {
     border-color: rgba(0, 0, 0, 0.15);
     box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
     color: rgba(0, 0, 0, 0.65);
 }
 
-.buttons a:hover {
+.buttons a:hover, button:hover, input:hover ,select:hover{
     transform: translateY(-1px);
 }
 
 .socialMedia {
     width: 100%;
     margin-top: 5rem;
-    background-color: #00C9FF;
+    background-color: #be1b2d;
     color: #FFFFFF;
     height: 5rem;
 }
@@ -130,12 +131,12 @@ body {
 
 /* Add a color to the active/current link */
 .topnav a.active {
-    background-color: #00C9FF;
+    background-color: #be1b2d;
     color: white;
 }
 
 .signIn {
-    background-color: #00C9FF;
+    background-color: #be1b2d;
     color: white;
 }
 
@@ -150,7 +151,7 @@ body {
 
 .centerTitle {
     font-size: 3rem;
-    color: #00C9FF;
+    color: #be1b2d;
     text-align: center;
     margin-top: 10rem;
 }
@@ -158,14 +159,30 @@ body {
 .form {
     font-size: 2rem;
     margin-bottom: 1rem;
-    display: grid;
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.selectStyle {
+    border: none;
+    padding: 5px;
+    margin-top: 1rem;
+    border-bottom: 1px solid #be1b2d;
+}
+
+.selectStyle:focus-visible{
+    outline: none;
+    border-bottom: 1px solid #25fd1b;
+    transition-duration: 0.5s;
 }
 
 .input {
     border: none;
     padding: 5px;
     margin-top: 1rem;
-    border-bottom: 1px solid #00C9FF;
+    border-bottom: 1px solid #be1b2d;
 }
 
 .input:focus-visible{
@@ -174,10 +191,126 @@ body {
     transition-duration: 0.5s;
 }
 
-.grid-container {
-    display: inline-block;
+.userTable{
+    margin: 2rem auto 0;
+    width: 80vw;
+    border-spacing: 0;
 }
 
-.grid-container {
-    display: inline-grid;
+.userTable td, th{
+    border-bottom: 1px solid #ddd;
+}
+
+.userTable tr:hover{
+    background-color: #9b9b9b;
+}
+
+.chooseUser {
+    margin-top: 2rem;
+}
+.userColumn {
+    float: left;
+    margin: 2rem auto 0;
+    width: 30vw;
+    border-spacing: 0;
+}
+
+.userTable td, th{
+    border-bottom: 1px solid #ddd;
+}
+
+.userTable tr:hover{
+    background-color: #9b9b9b;
+
+}/*----------------------------------------------------------------
+
+/* Import Google font - Poppins */
+
+.wrapper{
+    float: right;
+    width: 450px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+}
+.wrapper header{
+    display: flex;
+    align-items: center;
+    padding: 25px 30px 10px;
+    justify-content: space-between;
+}
+header .icons{
+    display: flex;
+}
+header .icons span{
+    height: 38px;
+    width: 38px;
+    margin: 0 1px;
+    cursor: pointer;
+    color: #878787;
+    text-align: center;
+    line-height: 38px;
+    font-size: 1.9rem;
+    user-select: none;
+    border-radius: 50%;
+}
+.icons span:last-child{
+    margin-right: -10px;
+}
+header .icons span:hover{
+    background: #f2f2f2;
+}
+header .current-date{
+    font-size: 1.45rem;
+    font-weight: 500;
+}
+.calendar{
+    padding: 20px;
+}
+.calendar ul{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    text-align: center;
+}
+.calendar .days{
+    margin-bottom: 20px;
+}
+.calendar li{
+    color: #333;
+    width: calc(100% / 7);
+    font-size: 1.07rem;
+}
+.calendar .weeks li{
+    font-weight: 500;
+    cursor: default;
+}
+.calendar .days li{
+    z-index: 1;
+    cursor: pointer;
+    position: relative;
+    margin-top: 30px;
+}
+.days li.inactive{
+    color: #aaa;
+}
+.days li.active{
+    color: #fff;
+}
+.days li::before{
+    position: absolute;
+    content: "";
+    left: 50%;
+    top: 50%;
+    height: 40px;
+    width: 40px;
+    z-index: -1;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+.days li.active::before{
+    background: #9B59B6;
+}
+.days li:not(.active):hover::before{
+    background: #f2f2f2;
 }

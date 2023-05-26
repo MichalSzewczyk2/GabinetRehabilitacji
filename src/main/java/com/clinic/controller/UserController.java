@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -24,9 +25,21 @@ public class UserController {
     return userRepository.getAll();
   }
 
-  @GetMapping("/user1")
-  public User getUserById() {
-    return userRepository.getById(1);
+  public List<User> getEmployees() {
+    List<User> employees = new ArrayList<>();
+    List<User> users = userRepository.getAll();
+    for(User user : users){
+      if(user.getStringType().equals("masseur") || user.getStringType().equals("physiotherapist"))employees.add(user);
+    }
+    return employees;
+  }
+
+  public void updateUser(User user){
+    userRepository.update(user);
+  }
+
+  public User getUserById(int id) {
+    return userRepository.getById(id);
   }
 
   public User getUserByEmail(String email) {
@@ -35,6 +48,16 @@ public class UserController {
 
   public User getUserByUsername(String username) {
     return userRepository.getByUsername(username);
+  }
+
+  public User getUserWithUsername(String username) {
+    List<User> users = userRepository.getAll();
+    for(User user : users){
+      if(user.getUsername().equals(username)){
+        return user;
+      }
+    }
+    return null;
   }
 
   public User addUser(User user) {

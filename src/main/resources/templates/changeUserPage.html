@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ManageUsers</title>
+    <link th:href="@{/styles/adminStyle.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="topnav">
+    <a th:href="@{/admin/users}">&#8592; Go back</a>
+    <a class="active" style="float:right" th:href="@{/logout}">Log out</a>
+</div>
+
+<form action="/admin/user" method="POST" th:object="${user}">
+    <div class="row">
+        <div class="column">
+            <div class="form">
+                <label for="name">First Name</label>
+                <input class="input" id="name" name="name" th:value="${user.name}"/>
+            </div>
+            <div class="form">
+                <label for="surname">Surname</label>
+                <input class="input" id="surname" name="surname" th:value="${user.surname}"/>
+            </div>
+            <div class="form">
+                <label for="address">Address</label>
+                <input class="input" id="address" name="address" th:value="${user.address}"/>
+            </div>
+            <div class="form">
+                <label for="email">Email</label>
+                <input class="input" id="email" name="email" th:value="${user.email}"/>
+            </div>
+            <div class="form">
+                <label for="role">Role</label>
+                <select class="selectStyle" id="role" th:field="*{userType}">
+                    <option th:value="client" th:selected="client == ${user.userType} ? true : false">Client</option>
+                    <option th:value="admin" th:selected="admin == ${user.userType} ? true : false">Admin</option>
+                    <option th:value="secretary" th:selected="secretary == ${user.userType} ? true : false">Secretary
+                    </option>
+                    <option th:value="masseur" th:selected="masseur == ${user.userType} ? true : false">Masseur</option>
+                    <option th:value="physiotherapist" th:selected="physiotherapist == ${user.userType} ? true : false">
+                        Physiotherapist
+                    </option>
+                </select>
+            </div>
+
+        </div>
+        <div class="column">
+            <div class="form">
+                <label for="phoneNumber">Phone number</label>
+                <input class="input" id="phoneNumber" name="phoneNumber" th:value="${user.phoneNumber}"/>
+            </div>
+            <div class="form">
+                <label for="birthDate">Birth Date</label>
+                <input class="input" id="birthDate" name="birthDate" th:value="${user.birthDate}"/>
+            </div>
+            <div class="form">
+                <label for="username">Username</label>
+                <input class="input" id="username" name="username" th:value="${user.username}"/>
+            </div>
+            <div class="form">
+                <label for="password">Password</label>
+                <input class="input" id="password" name="password" th:value="${user.password}"/>
+            </div>
+            <div class="buttons">
+                <button type="submit">submit</button>
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+</html>

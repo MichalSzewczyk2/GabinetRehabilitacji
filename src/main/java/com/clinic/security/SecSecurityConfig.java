@@ -1,5 +1,6 @@
-package com.clinic.helpers;
+package com.clinic.security;
 
+import com.clinic.helpers.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -30,7 +31,12 @@ public class SecSecurityConfig {
 
     http.csrf().disable()
       .authorizeHttpRequests((authorize) ->
-        authorize.requestMatchers("/styles/**","/images/**","/signIn","/main").permitAll()
+        authorize.requestMatchers("/styles/**",
+            "/images/**",
+            "/js/**",
+            "/signIn",
+            "/main")
+          .permitAll()
           .anyRequest().authenticated())
       .formLogin(form -> form
         .loginPage("/logIn")

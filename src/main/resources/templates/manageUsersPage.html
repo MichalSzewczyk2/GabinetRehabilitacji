@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ManageUsers</title>
+    <link th:href="@{/styles/adminStyle.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="topnav">
+    <a th:href="@{/main}">&#8592; Go back</a>
+    <a class="active" style="float:right" th:href="@{/logout}">Log out</a>
+</div>
+<div class="middle">
+    <div class="chooseUser">
+        <form action="/admin/user/byUsername" method="POST" th:object="${username}">
+            <div class="form">
+                <label for="user">User</label>
+                <input class="input" type="text" id="user" th:field="*{value}"/>
+            </div>
+            <div class="buttons">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+    <table class="userTable">
+        <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Email</th>
+            <th></th>
+        </tr>
+        <tr th:each="user, is: ${users}">
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.surname}"></td>
+            <td th:text="${user.email}"></td>
+            <td class="buttons">
+                <a th:href="@{/admin/user/change/{id}(id=${user.id})}">Change</a>
+                <a class="deleteB" th:href="@{/admin/user/deleteUser/{id}(id=${user.id})}">Delete</a>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
