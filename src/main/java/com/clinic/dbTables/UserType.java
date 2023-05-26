@@ -4,11 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public enum UserType {
-  CLIENT,
-  ADMIN,
-  SECRETARY,
-  MASSEUR,
-  PHYSIOTHERAPIST;
+  CLIENT("client"),
+  ADMIN("admin"),
+  SECRETARY("secretary"),
+  MASSEUR("masseur"),
+  PHYSIOTHERAPIST("physiotherapist");
+
+  UserType(String role) {
+  }
 
   public static UserType setUserType(String type) {
 

@@ -4,16 +4,7 @@
     <meta charset="UTF-8">
     <title>ManageUsers</title>
     <link th:href="@{/styles/adminStyle.css}" rel="stylesheet"/>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
-    <link href='js/packages/core/main.css' rel='stylesheet'/>
-    <link href='js/packages/daygrid/main.css' rel='stylesheet'/>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
-
+    <script type="text/javascript" th:script="@{/js/mainJS.js}" defer="defer"></script>
 </head>
 <body>
 <div class="topnav">
@@ -21,41 +12,35 @@
     <a class="active" style="float:right" th:href="@{/logout}">Log out</a>
 </div>
 <div class="userColumn">
-Tutaj usery
+    <table>
+        <tr>
+            <th>Employee</th>
+        </tr>
+        <tr th:each="emp, is: ${employees}">
+            <td th:text="${user.name} ${user.surname}"></td>
+        </tr>
+    </table>
 </div>
-<div class="content">
-    <div id='calendar'></div>
+<div class="wrapper">
+    <header>
+        <p class="current-date"></p>
+        <div class="icons">
+            <span id="prev" class="material-symbols-rounded">&#8249;</span>
+            <span id="next" class="material-symbols-rounded">&#8250;</span>
+        </div>
+    </header>
+    <div class="calendar">
+        <ul class="weeks">
+            <li>Sun</li>
+            <li>Mon</li>
+            <li>Tue</li>
+            <li>Wed</li>
+            <li>Thu</li>
+            <li>Fri</li>
+            <li>Sat</li>
+        </ul>
+        <ul class="days"></ul>
+    </div>
 </div>
-
-<script src="js/jquery-3.3.1.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-
-<script src='fjs/packages/core/main.js'></script>
-<script src='js/packages/interaction/main.js'></script>
-<script src='js/packages/daygrid/main.js'></script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var calendarEl = document.getElementById('calendar');
-
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-            plugins: ['interaction', 'dayGrid'],
-            defaultDate: '2020-02-12',
-            editable: true,
-            eventLimit: true, // allow "more" link when too many events
-            events: [
-                {
-                    title: 'Long Event',
-                    start: '2020-02-07',
-                    end: '2020-02-10'
-                }
-            ]
-        });
-        calendar.render();
-    });
-</script>
-
-<script src="js/calendar.js"></script>
 </body>
 </html>

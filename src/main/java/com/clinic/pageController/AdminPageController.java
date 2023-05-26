@@ -31,6 +31,7 @@ public class AdminPageController {
 
   @GetMapping("/admin/employees")
   public String getEmployeesPage(WebRequest request, Model model){
+    model.addAttribute("employees", userController.getEmployees());
     return "manageEmployeesPage";
   }
 
