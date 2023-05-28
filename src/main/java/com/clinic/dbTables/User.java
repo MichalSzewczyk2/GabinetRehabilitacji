@@ -51,6 +51,31 @@ public class User {
     return list;
   }
 
+  public boolean equalsUser(User user){
+    if(this.id == user.getId()){
+      if(this.name.equals(user.getName())){
+        if(this.surname.equals(user.getSurname())){
+          if(this.address.equals(user.getAddress())) {
+            if (this.birthDate.equals(user.getBirthDate())) {
+              if (this.phoneNumber == user.getPhoneNumber()) {
+                if (this.email.equals(user.getEmail())) {
+                  if (this.userType == user.getUserType()) {
+                    if (this.username.equals(user.getUsername())) {
+                      if (this.password.equals(user.getPassword())) {
+                        return true;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return false;
+  }
+
   @NotNull
   @SneakyThrows
   public static User getUserFromResultSet(ResultSet rs) {

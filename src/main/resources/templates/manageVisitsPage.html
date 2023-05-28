@@ -12,7 +12,7 @@
 </div>
 <div class="middle">
   <div class="chooseUser">
-    <form action="/admin/visits/byUsername" method="POST" th:object="${username}">
+    <form action="/admin/visits" method="POST" th:object="${username}">
       <div class="form">
         <label for="user">User</label>
         <input class="input" type="text" id="user" th:field="*{value}"/>
@@ -27,17 +27,19 @@
       <th>User</th>
       <th>Doctor</th>
       <th>Date</th>
-      <th>Time</th>
+      <th>Surgery</th>
       <th>Status</th>
       <th></th>
     </tr>
     <tr th:each="visit, is: ${visits}">
-      <td th:text="${visit.name}"></td>
-      <td th:text="${visit.surname}"></td>
-      <td th:text="${visit.email}"></td>
+      <td th:text="${visit.clientId}"></td>
+      <td th:text="${visit.doctorId}"></td>
+      <td th:text="${visit.date}"></td>
+      <td th:text="${visit.surgeryId}"></td>
+      <td th:text="${visit.status}"></td>
       <td class="buttons">
-        <a th:href="@{/admin/user/change/{id}(id=${visit.id})}">Change</a>
-        <a th:href="@{/admin/user/deleteVisit/{id}(id=${visit.id})}">Delete</a>
+        <a th:href="@{/admin/user/change/{id}(id=${visit.visitId})}">Change</a>
+        <a th:href="@{/admin/user/deleteVisit/{id}(id=${visit.visitId})}">Delete</a>
       </td>
     </tr>
   </table>

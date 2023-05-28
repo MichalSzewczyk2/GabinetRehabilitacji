@@ -1,4 +1,4 @@
-package com.clinic.helpers;
+package com.clinic.dto;
 
 import com.clinic.annotations.PasswordMatches;
 import com.clinic.annotations.ValidEmail;

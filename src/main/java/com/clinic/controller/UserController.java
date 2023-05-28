@@ -29,7 +29,9 @@ public class UserController {
     List<User> employees = new ArrayList<>();
     List<User> users = userRepository.getAll();
     for(User user : users){
-      if(user.getStringType().equals("masseur") || user.getStringType().equals("physiotherapist"))employees.add(user);
+      if(user.getStringType().equals("masseur") || user.getStringType().equals("physiotherapist")){
+        employees.add(user);
+      }
     }
     return employees;
   }
@@ -66,5 +68,10 @@ public class UserController {
       return user;
     }
     return null;
+  }
+
+  public boolean checkUser(User user) {
+    User dbUser = userRepository.getById(user.getId());
+    return dbUser.equalsUser(user);
   }
 }

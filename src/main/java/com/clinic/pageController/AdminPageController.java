@@ -1,8 +1,14 @@
 package com.clinic.pageController;
 
 import com.clinic.controller.UserController;
+import com.clinic.controller.VisitController;
+import com.clinic.controller.WorkScheduleController;
 import com.clinic.dbTables.User;
-import com.clinic.helpers.StringDTO;
+import com.clinic.dbTables.Visit;
+import com.clinic.dbTables.WorkSchedule;
+import com.clinic.dto.EmployeeDTO;
+import com.clinic.dto.StringDTO;
+import org.jetbrains.annotations.Async;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,13 +17,21 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.context.request.WebRequest;
-import org.springframework.web.servlet.ModelAndView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class AdminPageController {
 
   @Autowired
   private UserController userController;
+
+  @Autowired
+  private VisitController visitController;
+
+  @Autowired
+  private WorkScheduleController workScheduleController;
 
   @GetMapping("/admin/users")
   public String getManageUsersPage(WebRequest request, Model model){
@@ -31,7 +45,15 @@ public class AdminPageController {
 
   @GetMapping("/admin/employees")
   public String getEmployeesPage(WebRequest request, Model model){
-    model.addAttribute("employees", userController.getEmployees());
+    List<EmployeeDTO> employees = new ArrayList<>();
+    List<User> userEmployees = userController.getEmployees();
+    for(User employee : userEmployees){
+      EmployeeDTO emp = new EmployeeDTO();
+      emp.setId(employee.getId());
+      emp.setName(employee.getName() + " " + employee.getSurname());
+      employees.add(emp);
+    }
+    model.addAttribute("employees", employees);
     return "manageEmployeesPage";
   }
 
@@ -42,18 +64,48 @@ public class AdminPageController {
     return "manageVisitsPage";
   }
 
+  @PostMapping("/admin/visits")
+  public String postManageVisitsPage(@ModelAttribute("username")StringDTO username, Model model){
+    int userId = userController.getUserByUsername(username.getValue()).getId();
+    List<Visit> visits = visitController.getAllUserVisits(userId);
+    StringDTO newUsername = new StringDTO();
+    model.addAttribute("username", newUsername);
+    model.addAttribute("visits", visits);
+    return "manageVisitsPage";
+  }
+
   @GetMapping("/admin/user/change/{id}")
   public String changeUser(@PathVariable("id")String id, Model model){
     int numberId = Integer.parseInt(id);
     User user = userController.getUserById(numberId);
     model.addAttribute("user", user);
+    model.addAttribute("Message", null);
     return "changeUserPage";
   }
+
+  @GetMapping("/admin/employee/change/{id}")
+  public String changeEmployee(@PathVariable("id")String id, Model model){
+    int numberId = Integer.parseInt(id);
+    User user = userController.getUserById(numberId);
+    WorkSchedule schedule = new WorkSchedule();
+    model.addAttribute("user", user);
+    model.addAttribute("newSchedule", schedule);
+    model.addAttribute("schedules", workScheduleController.getSchedulesForUser(numberId));
+    return "employeePage";
+  }
+
   @PostMapping("/admin/user")
-  public ModelAndView postChangeUsersPage(@ModelAttribute("user") User user, WebRequest request){
-    ModelAndView mav = new ModelAndView();
+  public String postChangeUsersPage(@ModelAttribute("user") User user, WebRequest request, Model model){
     userController.updateUser(user);
-    return new ModelAndView("succcess");
+    model.addAttribute("user", user);
+    StringDTO message = new StringDTO();
+    if(userController.checkUser(user)){
+      message.setValue("Acction was successful!");
+    }else{
+      message.setValue("Action failed!");
+    }
+    model.addAttribute("message", message);
+    return "changeUserPage";
   }
 
   @PostMapping("/admin/user/byUsername")
