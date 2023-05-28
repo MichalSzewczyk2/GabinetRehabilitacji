@@ -13,6 +13,8 @@ public class VisitController {
 
   @Autowired
   VisitRepository visitRepository;
+  @Autowired
+  UserController userController;
 
   public List<Visit> getAllUserVisits(int userId) {
     List<Visit> visits = visitRepository.getAll();
@@ -24,4 +26,5 @@ public class VisitController {
     }
     return result;
   }
+
 }

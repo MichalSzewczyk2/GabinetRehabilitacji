@@ -3,6 +3,7 @@ package com.clinic.helpers;
 import com.clinic.controller.UserController;
 import com.clinic.dbTables.User;
 import com.clinic.dbTables.UserType;
+import com.clinic.dto.UserDTO;
 import com.clinic.exceptions.UserAlreadyExistException;
 import com.clinic.interfaces.IUserService;
 import jakarta.transaction.Transactional;

@@ -2,7 +2,7 @@ package com.clinic.pageController;
 
 import com.clinic.dbTables.User;
 import com.clinic.exceptions.UserAlreadyExistException;
-import com.clinic.helpers.UserDTO;
+import com.clinic.dto.UserDTO;
 import com.clinic.helpers.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;

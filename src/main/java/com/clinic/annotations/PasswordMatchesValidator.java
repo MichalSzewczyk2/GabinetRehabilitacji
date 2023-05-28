@@ -1,6 +1,6 @@
 package com.clinic.annotations;
 
-import com.clinic.helpers.UserDTO;
+import com.clinic.dto.UserDTO;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 

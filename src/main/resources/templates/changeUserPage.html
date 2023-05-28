@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <title>ManageUsers</title>
     <link th:href="@{/styles/adminStyle.css}" rel="stylesheet"/>
+    <script type="text/javascript" th:src="@{/js/helpers.js}"></script>
 </head>
 <body>
+<script th:unless="${message == null}" th:inline="javascript">
+    showAlert(`[[${message.value}]]`);
+</script>
 <div class="topnav">
     <a th:href="@{/admin/users}">&#8592; Go back</a>
     <a class="active" style="float:right" th:href="@{/logout}">Log out</a>
@@ -14,6 +18,7 @@
 <form action="/admin/user" method="POST" th:object="${user}">
     <div class="row">
         <div class="column">
+            <input type="hidden" id="id" name="id" th:value="${user.id}"/>
             <div class="form">
                 <label for="name">First Name</label>
                 <input class="input" id="name" name="name" th:value="${user.name}"/>
@@ -33,14 +38,16 @@
             <div class="form">
                 <label for="role">Role</label>
                 <select class="selectStyle" id="role" th:field="*{userType}">
-                    <option th:value="client" th:selected="client == ${user.userType} ? true : false">Client</option>
-                    <option th:value="admin" th:selected="admin == ${user.userType} ? true : false">Admin</option>
-                    <option th:value="secretary" th:selected="secretary == ${user.userType} ? true : false">Secretary
-                    </option>
-                    <option th:value="masseur" th:selected="masseur == ${user.userType} ? true : false">Masseur</option>
-                    <option th:value="physiotherapist" th:selected="physiotherapist == ${user.userType} ? true : false">
-                        Physiotherapist
-                    </option>
+                    <option th:each="role : ${T(com.clinic.dbTables.UserType).values()}"
+                        th:value="${role}" th:text="${role}"></option>
+<!--                    <option th:value="client" th:selected="client == ${user.userType} ? true : false">Client</option>-->
+<!--                    <option th:value="admin" th:selected="admin == ${user.userType} ? true : false">Admin</option>-->
+<!--                    <option th:value="secretary" th:selected="secretary == ${user.userType} ? true : false">Secretary-->
+<!--                    </option>-->
+<!--                    <option th:value="masseur" th:selected="masseur == ${user.userType} ? true : false">Masseur</option>-->
+<!--                    <option th:value="physiotherapist" th:selected="physiotherapist == ${user.userType} ? true : false">-->
+<!--                        Physiotherapist-->
+<!--                    </option>-->
                 </select>
             </div>
 

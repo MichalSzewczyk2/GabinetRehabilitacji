@@ -1,4 +1,4 @@
-package com.clinic.helpers;
+package com.clinic.dto;
 
 import org.jetbrains.annotations.NotNull;
 
