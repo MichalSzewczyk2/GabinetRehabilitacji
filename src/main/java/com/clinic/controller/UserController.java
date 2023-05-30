@@ -36,6 +36,17 @@ public class UserController {
     return employees;
   }
 
+  public List<User> getUserListByNameAndSurname(String name, String surname){
+    List<User> result = new ArrayList<>();
+    List<User> users = userRepository.getAll();
+    for(User user : users){
+      if(user.getName().equals(name) && user.getSurname().equals(surname)){
+        result.add(user);
+      }
+    }
+    return result;
+  }
+
   public void updateUser(User user){
     userRepository.update(user);
   }

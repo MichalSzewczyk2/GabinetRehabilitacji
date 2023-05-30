@@ -1,5 +1,6 @@
 package com.clinic.pageController;
 
+import com.clinic.controller.SurgeryController;
 import com.clinic.controller.UserController;
 import com.clinic.controller.VisitController;
 import com.clinic.controller.WorkScheduleController;
@@ -8,6 +9,7 @@ import com.clinic.dbTables.Visit;
 import com.clinic.dbTables.WorkSchedule;
 import com.clinic.dto.EmployeeDTO;
 import com.clinic.dto.StringDTO;
+import com.clinic.dto.VisitDTO;
 import org.jetbrains.annotations.Async;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +23,8 @@ import org.springframework.web.context.request.WebRequest;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.clinic.pageController.SecretaryController.getVisitDTO;
+
 @Controller
 public class AdminPageController {
 
@@ -32,6 +36,9 @@ public class AdminPageController {
 
   @Autowired
   private WorkScheduleController workScheduleController;
+
+  @Autowired
+  private SurgeryController surgeryController;
 
   @GetMapping("/admin/users")
   public String getManageUsersPage(WebRequest request, Model model){
@@ -68,9 +75,13 @@ public class AdminPageController {
   public String postManageVisitsPage(@ModelAttribute("username")StringDTO username, Model model){
     int userId = userController.getUserByUsername(username.getValue()).getId();
     List<Visit> visits = visitController.getAllUserVisits(userId);
+    List<VisitDTO> visitsDTO = new ArrayList<>();
+    for(Visit visit: visits){
+      visitsDTO.add(solveVisit(visit));
+    }
     StringDTO newUsername = new StringDTO();
     model.addAttribute("username", newUsername);
-    model.addAttribute("visits", visits);
+    model.addAttribute("visits", visitsDTO);
     return "manageVisitsPage";
   }
 
@@ -115,4 +126,8 @@ public class AdminPageController {
     return "changeUserPage";
   }
 
+
+  public VisitDTO solveVisit(Visit visit){
+    return getVisitDTO(visit, userController, surgeryController);
+  }
 }
