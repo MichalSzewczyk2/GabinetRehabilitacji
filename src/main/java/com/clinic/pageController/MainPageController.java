@@ -20,6 +20,9 @@ public class MainPageController {
     if(currentPrincipalName.equals("admin")){
       return "mainAdminPage";
     }
+    if(currentPrincipalName.equals("secretary")){
+      return "mainSecretaryPage";
+    }
 
     if(page != null){
       if(page.equals("home")){
