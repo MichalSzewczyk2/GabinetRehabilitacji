@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="EN">
+<head>
+  <meta charset="UTF-8">
+  <title>MainPage</title>
+  <link th:href="@{/styles/secretaryStyle.css}" rel="stylesheet" />
+</head>
+<body>
+<div class="topnav">
+  <a th:href="@{/main}">&#8592; Go back</a>
+  <a class="active" style="float:right" th:href="@{/logout}" >Log out</a>
+</div>
+
+<div class="middle">
+
+  <div class="row">
+    <form action="/secretary/getContact" method="POST" th:object="${name}">
+      <div class="visitForm">
+        <div style="margin-right: 3rem;" class="form">
+          <label for="name">Name</label>
+          <input class="input" type="text" id="name" th:field="*{name}"/>
+        </div>
+        <div style="margin-right: 3rem;" class="form">
+          <label for="surname">Surname</label>
+          <input class="input" type="text" id="surname" th:field="*{surname}"/>
+        </div>
+      </div>
+      <div class="buttons">
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+
+  <table class="userTable">
+    <tr>
+      <th>Name</th>
+      <th>Surname</th>
+      <th>Address</th>
+      <th>Email</th>
+      <th>Phone number</th>
+    </tr>
+    <tr th:each="user, is: ${users}">
+      <td th:text="${user.getName}"></td>
+      <td th:text="${user.getSurname}"></td>
+      <td th:text="${user.getAddress}"></td>
+      <td th:text="${user.getEmail}"></td>
+      <td th:text="${user.getPhoneNumber}"></td>
+    </tr>
+  </table>
+
+</div>
+
+<div class="footerEmpty">
+  <div class="socialMedia">
+    tekst
+  </div>
+  <div class="copyRight">
+    <p>Politechnika Krakowska © 2023</p>
+  </div>
+</div>
+</body>
+</html>

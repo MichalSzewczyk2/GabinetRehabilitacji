@@ -27,9 +27,12 @@ public class SecSecurityConfig {
   }
 
   @Bean
-  public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
+  public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
     http.csrf().disable()
+//      .authorizeHttpRequests((authorize) ->
+//        authorize.requestMatchers("/admin/**")
+//          .hasRole("ADMIN"))
       .authorizeHttpRequests((authorize) ->
         authorize.requestMatchers("/styles/**",
             "/images/**",
@@ -44,8 +47,8 @@ public class SecSecurityConfig {
         .defaultSuccessUrl("/main")
         .permitAll())
       .logout(logout -> logout
-        .logoutRequestMatcher( new AntPathRequestMatcher("/logout"))
-          .permitAll());
+        .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+        .permitAll());
 
     return http.build();
 
@@ -57,7 +60,7 @@ public class SecSecurityConfig {
   }
 
   @Bean
-  public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception{
+  public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
     return configuration.getAuthenticationManager();
   }
 
