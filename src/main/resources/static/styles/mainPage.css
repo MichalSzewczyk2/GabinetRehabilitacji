@@ -1,14 +1,14 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
 body {
+    font-family: 'Montserrat', sans-serif;
     text-align:center;
     display:flex;
     flex-direction:column;
     min-height:100vh;
     margin: 0;
-}
-
-#html {
-    background: #FFFFFF;
+    background: rgb(1,35,64);
+    background: linear-gradient(52deg, rgba(1,35,64,1) 0%, rgba(2,89,89,1) 39%, rgba(2,115,51,1) 85%);
 }
 
 .middle {
@@ -24,8 +24,40 @@ body {
     flex-direction: column;
     align-content: center;
     justify-content: center;
-    background-color: #00C9FF;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 16px 16px 0px 0px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4.9px);
+    -webkit-backdrop-filter: blur(4.9px);
+    border: solid rgba(0, 0, 0, 0.1);
+    border-width: 1px 0px 0px 0px;
     color: #FFFFFF;
+}
+
+break {
+    flex-basis: 100%;
+    width: 0px;
+    height: 0px;
+    overflow: hidden;
+}
+
+#firstColumn {
+    display: inline-flex;
+    flex-flow: column;
+    width: 10rem;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1rem;
+    margin-right: 3rem;
+}
+
+#secondColumn {
+    display: inline-flex;
+    flex-flow: column;
+    width: 10rem;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1rem;
 }
 
 .copyRight {
@@ -39,6 +71,13 @@ body {
     text-align: center;
 }
 
+.centerTitle {
+    font-weight: bold;
+}
+
+.secondColumn {
+    clear: both;
+}
 
 .buttons a,
 .buttons button{
@@ -71,19 +110,37 @@ body {
 
 .buttons a:hover,
 .buttons a:focus {
-    border-color: rgba(0, 0, 0, 0.15);
-    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-    color: rgba(0, 0, 0, 0.65);
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(9px);
+    -webkit-backdrop-filter: blur(9px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .buttons a:hover {
     transform: translateY(-1px);
 }
 
+.buttons button {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(9px);
+    -webkit-backdrop-filter: blur(9px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.buttons button:hover {
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(9px);
+    -webkit-backdrop-filter: blur(9px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 .socialMedia {
     width: 100%;
     margin-top: 5rem;
-    background-color: #00C9FF;
     color: #FFFFFF;
     height: 5rem;
 }
@@ -108,8 +165,13 @@ body {
 
 /* Add a black background color to the top navigation */
 .topnav {
-    background-color: #333;
     overflow: hidden;
+    background: rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4.9px);
+    -webkit-backdrop-filter: blur(4.9px);
+    border: solid rgba(0, 0, 0, 0.1);
+    border-width: 1px 0px 0px 0px;
 }
 
 /* Style the links inside the navigation bar */
@@ -135,7 +197,6 @@ body {
 }
 
 .signIn {
-    background-color: #00C9FF;
     color: white;
 }
 
@@ -143,14 +204,26 @@ body {
     flex: 1;
     height: 100%;
     display: flex;
+    width: 30rem;
     align-content: center;
     justify-content: center;
     margin-top: 3rem;
+    margin-bottom: 5rem;
+    margin-left: calc(50% - 15rem);
+    color: #f2f2f2;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4.9px);
+    -webkit-backdrop-filter: blur(4.9px);
+    border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .centerTitle {
     font-size: 3rem;
-    color: #00C9FF;
+    color: #f2f2f2;
     text-align: center;
     margin-top: 10rem;
 }
@@ -165,12 +238,17 @@ body {
     border: none;
     padding: 5px;
     margin-top: 1rem;
-    border-bottom: 1px solid #00C9FF;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(9px);
+    -webkit-backdrop-filter: blur(9px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .input:focus-visible{
     outline: none;
-    border-bottom: 1px solid #25fd1b;
+    border: 1px solid rgba(255, 255, 255, 0.5);
     transition-duration: 0.5s;
 }
 
