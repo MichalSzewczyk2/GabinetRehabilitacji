@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.context.request.WebRequest;
 
 @Controller
-public class errorController {
+public class ErrorController {
 
     @GetMapping("/back")
     public String getLogInPage(WebRequest request, Model model) {
