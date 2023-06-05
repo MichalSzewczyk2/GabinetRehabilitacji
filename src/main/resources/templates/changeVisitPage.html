@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ManageUsers</title>
+  <link th:href="@{/styles/adminStyle.css}" rel="stylesheet"/>
+  <script type="text/javascript" th:src="@{/js/helpers.js}"></script>
+</head>
+<body>
+<script th:unless="${message == null}" th:inline="javascript">
+  showAlert(`[[${message.value}]]`);
+</script>
+<div class="topnav">
+  <a th:href="@{/admin/visits}">&#8592; Go back</a>
+  <a class="active" style="float:right" th:href="@{/logout}">Log out</a>
+</div>
+
+<form action="/admin/visits/change" method="POST" th:object="${visit}">
+  <div class="row">
+    <div class="column">
+      <input type="hidden" id="id" name="id" th:value="${visit.id}"/>
+      <div class="form">
+        <label for="date">Date</label>
+        <input class="input" type="date" id="date" name="date" th:value="${visit.date}"/>
+      </div>
+      <div class="form">
+        <label for="time">Time</label>
+        <input class="input" type="time" id="time" name="time" th:value="${user.surname}"/>
+      </div>
+      <div class="form">
+        <label for="address">Address</label>k
+        <input class="input" id="address" name="address" th:value="${user.address}"/>
+      </div>
+      <div class="form">
+        <label for="email">Email</label>
+        <input class="input" id="email" name="email" th:value="${user.email}"/>
+      </div>
+      <div class="form">
+        <label for="status">Role</label>
+        <select class="selectStyle" id="status" th:field="*{status}">
+          <option th:each="role : ${T(com.clinic.dbTables.VisitStatus.values()}"
+                  th:value="${status}" th:text="${status}"></option>
+        </select>
+      </div>
+
+    </div>
+    <div class="column">
+      <div class="form">
+        <label for="phoneNumber">Phone number</label>
+        <input class="input" id="phoneNumber" name="phoneNumber" th:value="${user.phoneNumber}"/>
+      </div>
+      <div class="form">
+        <label for="birthDate">Birth Date</label>
+        <input class="input" id="birthDate" name="birthDate" th:value="${user.birthDate}"/>
+      </div>
+      <div class="form">
+        <label for="username">Username</label>
+        <input class="input" id="username" name="username" th:value="${user.username}"/>
+      </div>
+      <div class="form">
+        <label for="password">Password</label>
+        <input class="input" id="password" name="password" th:value="${user.password}"/>
+      </div>
+      <div class="buttons">
+        <button type="submit">submit</button>
+      </div>
+    </div>
+  </div>
+</form>
+</body>
+</html>

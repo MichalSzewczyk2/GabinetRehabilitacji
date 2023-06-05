@@ -85,4 +85,8 @@ public class UserController {
     User dbUser = userRepository.getById(user.getId());
     return dbUser.equalsUser(user);
   }
+
+  public void deleteUserWithId(int id){
+    userRepository.delete(id);
+  }
 }

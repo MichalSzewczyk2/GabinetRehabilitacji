@@ -39,7 +39,7 @@
       <td th:text="${visit.status}"></td>
       <td class="buttons">
         <a th:href="@{/admin/visit/change/{id}(id=${visit.id})}">Change</a>
-        <a th:href="@{/admin/visit/delete/{id}(id=${visit.id})}">Delete</a>
+        <a th:onclick="deleteAlter([[${visit.id}]], [['/admin/visit/deleteVisit/']])">Delete</a>
       </td>
     </tr>
   </table>

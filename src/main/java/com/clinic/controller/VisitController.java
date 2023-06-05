@@ -27,4 +27,11 @@ public class VisitController {
     return result;
   }
 
+  public Visit getVisitById(int id){
+    return visitRepository.getById(id);
+  }
+
+  public void deleteVisitById(int id){
+    visitRepository.delete(id);
+  }
 }

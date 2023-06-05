@@ -26,7 +26,7 @@ const renderCalendar = () => {
         // adding active class to li if the current day, month, and year matched
         let isToday = i === date.getDate() && currMonth === new Date().getMonth()
         && currYear === new Date().getFullYear() ? "active" : "";
-        liTag += `<li onclick="getDayPage(` + i + `)" class="${isToday}">${i}</li>`;
+        liTag += `<li class="${isToday}">${i}</li>`;
     }
 
     for (let i = lastDayofMonth; i < 6; i++) { // creating li of next month first days
@@ -42,7 +42,7 @@ prevNextIcon.forEach(icon => { // getting prev and next icons
         // if clicked icon is previous icon then decrement current month by 1 else increment it by 1
         currMonth = icon.id === "prev" ? currMonth - 1 : currMonth + 1;
 
-        if (currMonth < 0 || currMonth > 11) { // if current month is less than 0 or greater than 11
+        if(currMonth < 0 || currMonth > 11) { // if current month is less than 0 or greater than 11
             // creating a new date of current year & month and pass it as date value
             date = new Date(currYear, currMonth, new Date().getDate());
             currYear = date.getFullYear(); // updating current year with new date year
@@ -53,13 +53,7 @@ prevNextIcon.forEach(icon => { // getting prev and next icons
         renderCalendar(); // calling renderCalendar function
     });
 });
-
-function getDayPage(i) {
-    fetch('/cal/day/' + i, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'text/html'
-        }
-    }).then(response => response.text())
-
-}
+//
+// function showMe() {
+//     console.log("Działam")
+// }

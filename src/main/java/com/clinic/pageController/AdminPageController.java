@@ -10,7 +10,6 @@ import com.clinic.dbTables.WorkSchedule;
 import com.clinic.dto.EmployeeDTO;
 import com.clinic.dto.StringDTO;
 import com.clinic.dto.VisitDTO;
-import org.jetbrains.annotations.Async;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.context.request.WebRequest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +39,7 @@ public class AdminPageController {
   private SurgeryController surgeryController;
 
   @GetMapping("/admin/users")
-  public String getManageUsersPage(WebRequest request, Model model){
+  public String getManageUsersPage(Model model){
     User user = new User();
     StringDTO username = new StringDTO();
     model.addAttribute("user", user);
@@ -51,7 +49,7 @@ public class AdminPageController {
   }
 
   @GetMapping("/admin/employees")
-  public String getEmployeesPage(WebRequest request, Model model){
+  public String getEmployeesPage(Model model){
     List<EmployeeDTO> employees = new ArrayList<>();
     List<User> userEmployees = userController.getEmployees();
     for(User employee : userEmployees){
@@ -65,7 +63,7 @@ public class AdminPageController {
   }
 
   @GetMapping("/admin/visits")
-  public String getVisitsPage(WebRequest request,Model model){
+  public String getVisitsPage(Model model){
     StringDTO username = new StringDTO();
     model.addAttribute("username", username);
     return "manageVisitsPage";
@@ -106,12 +104,12 @@ public class AdminPageController {
   }
 
   @PostMapping("/admin/user")
-  public String postChangeUsersPage(@ModelAttribute("user") User user, WebRequest request, Model model){
+  public String postChangeUsersPage(@ModelAttribute("user") User user, Model model){
     userController.updateUser(user);
     model.addAttribute("user", user);
     StringDTO message = new StringDTO();
     if(userController.checkUser(user)){
-      message.setValue("Acction was successful!");
+      message.setValue("Action was successful!");
     }else{
       message.setValue("Action failed!");
     }
@@ -126,7 +124,41 @@ public class AdminPageController {
     return "changeUserPage";
   }
 
+  @GetMapping("/admin/user/deleteUser/{id}")
+  public String deleteUser(@PathVariable("id")String id, Model model){
+    int numberId = Integer.parseInt(id);
+    userController.deleteUserWithId(numberId);
+    User user = new User();
+    StringDTO username = new StringDTO();
+    model.addAttribute("user", user);
+    model.addAttribute("username", username);
+    model.addAttribute("users", userController.getAll());
+    return "manageUsersPage";
+  }
 
+  @GetMapping("/admin/visit/deleteVisit/{id}")
+  public String deleteVisit(@PathVariable("id")String id, @ModelAttribute("username")StringDTO username, Model model){
+    int numberId = Integer.parseInt(id);
+    visitController.deleteVisitById(numberId);
+    int userId = userController.getUserByUsername(username.getValue()).getId();
+    List<Visit> visits = visitController.getAllUserVisits(userId);
+    List<VisitDTO> visitsDTO = new ArrayList<>();
+    for(Visit visit: visits){
+      visitsDTO.add(solveVisit(visit));
+    }
+    StringDTO newUsername = new StringDTO();
+    model.addAttribute("username", newUsername);
+    model.addAttribute("visits", visitsDTO);
+    return "manageVisitsPage";
+  }
+
+  @GetMapping("/admin/visit/change/{id}")
+  public String changeVisit(@PathVariable("id")String id, Model model){
+    int numberId = Integer.parseInt(id);
+    visitController.getVisitById(numberId);
+    model.addAttribute("visit", visitController.getVisitById(numberId));
+    return "changeVisitPage";
+  }
   public VisitDTO solveVisit(Visit visit){
     return getVisitDTO(visit, userController, surgeryController);
   }

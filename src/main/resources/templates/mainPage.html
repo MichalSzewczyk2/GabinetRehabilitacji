@@ -12,12 +12,15 @@
     <a href="?page=about">About</a>
     <a th:if="${role == 'anonymousUser'}" class="active" style="float:right" th:href="@{/logIn}" >Log in</a>
     <a th:if="${role == 'anonymousUser'}" style="float:right" th:href="@{/signIn}" id="signIn">Sign in</a>
+    <a th:if="${role == 'client'}" style="float:right" th:href="@{/user/profile}">My profile</a>
     <a th:unless="${role == 'anonymousUser'}" class="active" style="float:right" th:href="@{/logout}" >Log out</a>
 </div>
 <div class="middle">
     <div class="buttons">
-        <a href="?page=strona1">strona1</a>
-        <a href="?page=strona2">strona2</a>
+        <a th:unless="${role == 'client'}" href="?page=strona1">strona1</a>
+        <a th:unless="${role == 'client'}" href="?page=strona2">strona2</a>
+        <a th:if="${role == 'client'}"href="@{/user/visit">Make an appointment</a>
+        <a th:if="${role == 'client'}" href="?page=strona2">Check available surgeries</a>
     </div>
     <div class="row">
         <div class="column">

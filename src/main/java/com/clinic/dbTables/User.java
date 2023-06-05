@@ -27,6 +27,17 @@ public class User {
   private String username;
   private String password;
 
+  public User(String name, String surname, String address, LocalDate birthDate, int phoneNumber, String email, UserType userType, String username, String password) {
+    this.name = name;
+    this.surname = surname;
+    this.address = address;
+    this.birthDate = birthDate;
+    this.phoneNumber = phoneNumber;
+    this.email = email;
+    this.userType = userType;
+    this.username = username;
+    this.password = password;
+  }
 
   public String getStringType(){
     return switch (this.userType) {
