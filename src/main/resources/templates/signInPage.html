@@ -10,7 +10,7 @@
     <a th:href="@{/main}" >Home</a>
     <a style="float:right" th:href="@{/logIn}" >Log In</a>
 </div>
-<h1 class="centerTitle">Sign In</h1>
+<h1 class="centerTitle">SIGN IN</h1>
 <div class="signInForm">
     <form action="/signIn" th:object="${user}" method="POST">
             <span id="firstColumn">
@@ -68,11 +68,10 @@
                     <label for="confirm">Confirm password</label>
                     <input class="input" id="confirm" type="password" th:field="*{matchingPassword}"/>
                 </div>
+                <div class="buttons">
+                    <button type="submit">submit</button>
+                </div>
             </span>
-        <break></break>
-        <div class="buttons">
-            <button type="submit">submit</button>
-        </div>
     </form>
 </div>
 
