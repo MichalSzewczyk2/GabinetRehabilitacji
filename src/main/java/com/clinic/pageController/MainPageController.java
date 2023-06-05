@@ -16,7 +16,7 @@ public class MainPageController {
   private UserController userController;
 
   @GetMapping("/main")
-  public String getMain(@RequestParam(name = "page", required = false) String page, Model model) {
+  public String getMain(@RequestParam(name = "page", required = false) String page, Model model) throws Exception {
 
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
     String currentPrincipalName = authentication.getName();
@@ -44,11 +44,6 @@ public class MainPageController {
       }
     }
     return "mainPage";
-  }
-
-  @GetMapping("/customAccessDenied")
-  public String customAccessDenied(Model model) {
-    return "customAccessDenied";
   }
 
 }
