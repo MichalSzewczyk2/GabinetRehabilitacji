@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>ManageUsers</title>
     <link th:href="@{/styles/adminStyle.css}" rel="stylesheet"/>
+    <script type="text/javascript" th:src="@{/js/helpers.js}"></script>
 </head>
 <body>
 <div class="topnav">
@@ -35,7 +36,7 @@
             <td th:text="${user.email}"></td>
             <td class="buttons">
                 <a th:href="@{/admin/user/change/{id}(id=${user.id})}">Change</a>
-                <a class="deleteB" th:href="@{/admin/user/deleteUser/{id}(id=${user.id})}">Delete</a>
+                <a class="deleteB" th:onclick="deleteAlert([[${user.id}]], [['/admin/user/deleteUser/']])">Delete</a>
             </td>
         </tr>
     </table>

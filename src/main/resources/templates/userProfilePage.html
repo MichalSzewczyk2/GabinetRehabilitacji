@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/styles/mainPage.css}" rel="stylesheet" />
+</head>
+<body>
+<div class="topnav">
+    <a th:href="@{/main}">Home</a>
+    <a href="?page=contact">Contact</a>
+    <a href="?page=about">About</a>
+    <a th:if="${role == 'anonymousUser'}" class="active" style="float:right" th:href="@{/logIn}" >Log in</a>
+    <a th:if="${role == 'anonymousUser'}" style="float:right" th:href="@{/signIn}" id="signIn">Sign in</a>
+    <a th:unless="${role == 'anonymousUser'}" class="active" style="float:right" th:href="@{/logout}" >Log out</a>
+</div>
+
+<div class="middle">
+    <h1 th:text="${user.name + ' ' + user.surname}"></h1>
+    <a th:text="${'Username: ' + user.username}"></a>
+    <a th:text="${'Address: ' + user.address}"></a>
+    <a th:text="${'Birth date: ' + user.birthDate}"></a>
+    <a th:text="${'Phone number: ' + user.phoneNumber}"></a>
+    <a th:text="${'Email: ' + user.email}"></a>
+</div>
+
+<div class="footer">
+    <div class="socialMedia">
+        tekst
+    </div>
+    <div class="copyRight">
+        <p>Politechnika Krakowska © 2023</p>
+    </div>
+</div>
+</body>
+</html>
