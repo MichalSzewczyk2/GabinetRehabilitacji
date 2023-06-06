@@ -28,10 +28,10 @@ public class MainPageController {
 
     model.addAttribute("role", role);
     System.out.println(role);
-    if(currentPrincipalName.equals("admin")){
+    if(role.equals("admin")){
       return "mainAdminPage";
     }
-    if(currentPrincipalName.equals("secretary")){
+    if(role.equals("secretary")){
       return "mainSecretaryPage";
     }
 

@@ -12,5 +12,10 @@ public class ErrorController {
     public String getLogInPage(WebRequest request, Model model) {
         return "logInPage";
     }
+
+    @GetMapping("/customAccessDenied")
+    public String customAccessDenied() {
+        return "customAccessDenied";
+    }
 }
 

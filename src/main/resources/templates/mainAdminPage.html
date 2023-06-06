@@ -10,12 +10,13 @@
   <a href="#home">Home</a>
   <a href="?page=contact">Contact</a>
   <a href="?page=about">About</a>
-  <a class="active" style="float:right" th:href="@{/logout}" >Log out</a>
+  <a id="logout" class="active" style="float:right" th:href="@{/logout}" >Log out</a>
 </div>
 <div class="middle">
   <h1 class="centerTitle">Welcome in admin panel</h1>
   <div class="buttons">
-    <a th:href="@{/admin/users}">Manage Users</a>
+    <a id="manageUsers" th:href="@{/admin/users}">Manage Users</a>
+
     <a th:href="@{/admin/employees}">Manage Employees</a>
     <a th:href="@{/admin/visits}">Manage Appointments</a>
   </div>
