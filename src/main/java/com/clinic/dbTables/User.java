@@ -1,5 +1,8 @@
 package com.clinic.dbTables;
 
+import com.clinic.annotations.ValidEmail;
+import com.clinic.annotations.ValidPhoneNumber;
+import com.clinic.helpers.CaesarCipher;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,7 +24,9 @@ public class User {
   private String surname;
   private String address;
   private LocalDate birthDate;
+  @ValidPhoneNumber
   private int phoneNumber;
+  @ValidEmail
   private String email;
   private UserType userType;
   private String username;
@@ -92,7 +97,7 @@ public class User {
     newUser.setEmail(rs.getString("mail"));
     newUser.setUserType(UserType.setUserType(rs.getString("user_type")));
     newUser.setUsername(rs.getString("login"));
-    newUser.setPassword(rs.getString("password"));
+    newUser.setPassword(CaesarCipher.decrypt(rs.getString("password"), 9));
     return newUser;
   }
 

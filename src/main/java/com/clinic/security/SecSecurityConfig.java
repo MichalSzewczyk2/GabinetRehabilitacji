@@ -37,7 +37,7 @@ public class SecSecurityConfig {
             "/js/**",
             "/signIn",
             "/main",
-              "/system/**")
+            "/system/**")
           .permitAll()
           .anyRequest().authenticated())
       .formLogin(form -> form

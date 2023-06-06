@@ -1,6 +1,7 @@
 package com.clinic.dbRepository;
 
 import com.clinic.dbTables.User;
+import com.clinic.helpers.CaesarCipher;
 import com.clinic.helpers.UserListRowMapper;
 import com.clinic.helpers.UserRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,14 +55,14 @@ public class UserRepository {
 
   public void add(User user) {
     jdbcTemplate.update("INSERT INTO users (name, surname, address, birth_date, phone_number, mail, user_type, login, password) VALUES (?,?,?,?,?,?,?,?,?)",
-      user.getName(), user.getSurname(), user.getAddress(), user.getBirthDate(), user.getPhoneNumber(), user.getEmail(), user.getStringType(), user.getUsername(), user.getPassword());
+      user.getName(), user.getSurname(), user.getAddress(), user.getBirthDate(), user.getPhoneNumber(), user.getEmail(), user.getStringType(), user.getUsername(), CaesarCipher.encrypt(user.getPassword(), 9));
   }
 
   public void update(User user) {
     System.out.println("string: " + user.getStringType());
     System.out.println("type: " + user.getUserType());
     jdbcTemplate.update("UPDATE users SET name = ?, surname = ?, address = ?, birth_date = ?, phone_number = ?, mail = ?, user_type = ?, login = ?, password = ? WHERE user_id = ?",
-      user.getName(), user.getSurname(), user.getAddress(), user.getBirthDate(), user.getPhoneNumber(), user.getEmail(), user.getStringType(), user.getUsername(), user.getPassword(), user.getId());
+      user.getName(), user.getSurname(), user.getAddress(), user.getBirthDate(), user.getPhoneNumber(), user.getEmail(), user.getStringType(), user.getUsername(), CaesarCipher.encrypt(user.getPassword(), 9), user.getId());
   }
 
   public void delete(int id) {
