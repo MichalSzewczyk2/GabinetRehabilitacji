@@ -55,6 +55,7 @@ prevNextIcon.forEach(icon => { // getting prev and next icons
 });
 
 function getDayPage(i) {
+    console.log("getDayPage: " + i)
     fetch('/cal/day/' + i, {
         method: 'GET',
         headers: {

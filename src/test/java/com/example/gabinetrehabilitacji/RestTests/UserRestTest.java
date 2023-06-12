@@ -76,16 +76,6 @@ public class UserRestTest {
       .post("/system/delete/{username}")
       .then()
       .statusCode(302);
-
-//    given()
-//      .contentType("multipart/form-data")
-//      .multiPart("username", user.getUsername())
-//      .multiPart("password", user.getPassword())
-//      .multiPart("submit" , "Login")
-//      .when()
-//      .post("/logIn")
-//      .then()
-//      .statusCode(403);
   }
 
   public static int getRandomPhoneNumber() {

@@ -20,8 +20,8 @@
     <div class="buttons">
         <a th:unless="${role == 'client'}" href="?page=strona1">strona1</a>
         <a th:unless="${role == 'client'}" href="?page=strona2">strona2</a>
-        <a th:if="${role == 'client'}" href="@{/user/visit">Make an appointment</a>
-        <a th:if="${role == 'client'}" href="?page=strona2">Check available surgeries</a>
+        <a th:if="${role == 'client'}" th:href="@{/user/visit}">Make an appointment</a>
+        <a th:if="${role == 'client'}" th:href="@{/main/surg}">Check available surgeries</a>
     </div>
     <div class="row">
         <div class="column">

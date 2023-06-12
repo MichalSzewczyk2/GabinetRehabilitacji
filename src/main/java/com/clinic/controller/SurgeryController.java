@@ -5,6 +5,8 @@ import com.clinic.dbTables.Surgery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class SurgeryController {
 
@@ -13,5 +15,9 @@ public class SurgeryController {
 
   public Surgery getSurgeryById(int id){
     return surgeryRepository.getById(id);
+  }
+
+  public List<Surgery> getAllSurgeries(){
+    return surgeryRepository.getAll();
   }
 }

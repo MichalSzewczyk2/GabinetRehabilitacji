@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ManageUsers</title>
+    <link th:href="@{/styles/adminStyle.css}" rel="stylesheet"/>
+    <script type="text/javascript" th:src="@{/js/helpers.js}"></script>
+</head>
+<body>
+<script th:unless="${message == null}" th:inline="javascript">
+    showAlert(`[[${message.value}]]`);
+</script>
+<div class="topnav">
+    <a th:href="@{/user/profile}">&#8592; Go back</a>
+    <a class="active" style="float:right" th:href="@{/logout}">Log out</a>
+</div>
+
+<form action="/user/change" method="POST" th:object="${user}">
+    <div class="row">
+        <div class="column">
+            <input type="hidden" id="id" name="id" th:value="${user.id}"/>
+            <div class="form">
+                <label for="name">First Name</label>
+                <input class="input" id="name" name="name" th:value="${user.name}"/>
+            </div>
+            <div class="form">
+                <label for="surname">Surname</label>
+                <input class="input" id="surname" name="surname" th:value="${user.surname}"/>
+            </div>
+            <div class="form">
+                <label for="address">Address</label>
+                <input class="input" id="address" name="address" th:value="${user.address}"/>
+            </div>
+            <div class="form">
+                <label for="email">Email</label>
+                <input class="input" id="email" name="email" th:value="${user.email}"/>
+            </div>
+            <!--      <div class="form">-->
+            <!--        <label for="role">Role</label>-->
+            <!--        <select class="selectStyle" id="role" th:field="*{userType}">-->
+            <!--          <option th:each="role : ${T(com.clinic.dbTables.UserType).values()}"-->
+            <!--                  th:value="${role}" th:text="${role}"></option>-->
+            <!--        </select>-->
+            <!--      </div>-->
+            <input type="hidden" id="userType" name="userType" th:value="${user.userType}">
+
+        </div>
+        <div class="column">
+            <div class="form">
+                <label for="phoneNumber">Phone number</label>
+                <input class="input" id="phoneNumber" name="phoneNumber" th:value="${user.phoneNumber}"/>
+            </div>
+            <div class="form">
+                <label for="birthDate">Birth Date</label>
+                <input  type="date" class="input" id="birthDate" name="birthDate" th:value="${user.birthDate}"/>
+            </div>
+            <div class="form">
+                <label for="username">Username</label>
+                <input class="input" id="username" name="username" th:value="${user.username}"/>
+            </div>
+
+            <input type="hidden" id="password" name="password" th:value="${user.password}"/>
+
+            <div class="buttons">
+                <button type="submit">submit</button>
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+</html>
