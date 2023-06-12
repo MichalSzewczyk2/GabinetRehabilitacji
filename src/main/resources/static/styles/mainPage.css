@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
 
 body {
+    color: #f2f2f2;
     font-family: 'Montserrat', sans-serif;
     text-align:center;
     display:flex;
@@ -13,11 +14,26 @@ body {
 }
 
 .middle {
+    color: #f2f2f2;
     margin-top: 2rem;
     display: flex;
     flex-direction: column;
     align-content: center;
     justify-content: center;
+}
+
+.contact {
+    height: 60vh;
+}
+
+.contact img {
+    background: rgba(0, 0, 0, 0.3);
+    margin-top: 5rem;
+    height: 40vh;
+    border: solid rgba(0, 0, 0, 0.1);
+    border-width: 1px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
 }
 
 .footer {
@@ -75,6 +91,40 @@ body {
     color: #f2f2f2;
     text-align: center;
     margin-top: 5rem;
+}
+
+#info {
+    text-align: center;
+    align-content: center;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4.9px);
+    -webkit-backdrop-filter: blur(4.9px);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-top: 20vh;
+    height: fit-content;
+    color: white;
+    max-width: 30rem;
+    padding: 2rem;
+    margin-left: calc(50vw - 17rem - 8px);
+    margin-bottom: 20vh;
+}
+
+.footerimage {
+    height: 1rem;
+    margin-right: 1rem;
+}
+
+.socialMedia a,
+.socialMedia a:visited {
+    font-size: 24px;
+    text-align: center;
+    justify-content: center;
+    color: #f2f2f2;
+    text-decoration: none;
+    padding-bottom: 0.1rem;
+    margin-right: 3rem;
 }
 
 .secondColumn {

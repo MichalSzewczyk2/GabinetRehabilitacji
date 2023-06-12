@@ -15,7 +15,7 @@
     <a th:unless="${role == 'anonymousUser'}" class="active" style="float:right" th:href="@{/logout}" >Log out</a>
 </div>
 
-<div class="middle">
+<div id="info" class="middle">
     <h1 th:text="${user.name + ' ' + user.surname}"></h1>
     <a th:text="${'Username: ' + user.username}"></a>
     <a th:text="${'Address: ' + user.address}"></a>
@@ -26,7 +26,10 @@
 
 <div class="footer">
     <div class="socialMedia">
-        tekst
+        <img th:src="@{/images/facebook.png}" class="footerimage"/><a href="https://www.facebook.com/">FACEBOOK</a>
+        <img th:src="@{/images/instagram.png}" class="footerimage"/><a href="https://www.instagram.com/">INSTAGRAM</a>
+        <img th:src="@{/images/twitter.png}" class="footerimage"/><a href="https://twitter.com/home">TWITTER</a>
+        <img th:src="@{/images/telephone-call.png}" class="footerimage"/><a href="tel:+48123-456-789">CALL US!</a>
     </div>
     <div class="copyRight">
         <p>Politechnika Krakowska © 2023</p>
