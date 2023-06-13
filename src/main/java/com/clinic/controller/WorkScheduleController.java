@@ -5,6 +5,7 @@ import com.clinic.dbTables.WorkSchedule;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,5 +22,15 @@ public class WorkScheduleController {
       if(schedule.getDoctorId() == userId)userScheduleList.add(schedule);
     }
     return userScheduleList;
+  }
+
+  public WorkSchedule workingThatDay(int userId, LocalDate date){
+    List<WorkSchedule> schedules = workScheduleRepository.getAll();
+    for(WorkSchedule schedule : schedules){
+      if(schedule.getDoctorId() == userId && schedule.getDate().equals(date)){
+        return schedule;
+      }
+    }
+    return null;
   }
 }

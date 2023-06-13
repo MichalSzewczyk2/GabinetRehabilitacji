@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Surgeries</title>
+  <link th:href="@{/styles/adminStyle.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="topnav">
+  <a th:href="@{/main}">&#8592; Go back</a>
+  <a class="active" style="float:right" th:href="@{/logout}">Log out</a>
+</div>
+<div style="margin-top: 5rem" th:each="surg, is: ${sur}">
+  <h1 th:text="${surg.getName()}"></h1>
+  <a th:text="${surg.getDescription()}"></a>
+</div>
+
+</body>
+</html>

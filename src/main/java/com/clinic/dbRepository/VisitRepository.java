@@ -27,12 +27,12 @@ public class VisitRepository {
 
   public void add(Visit visit) {
     jdbcTemplate.update("INSERT INTO visits (status, date, time, progress_assesment, notes, client_id, doctor_id, surgery_id) VALUES (?,?,?,?,?,?,?,?)",
-      visit.getStatus(), visit.getDate(), visit.getTime(), visit.getProgressAssessment(), visit.getNotes(), visit.getClientId(), visit.getDoctorId(), visit.getSurgeryId());
+      visit.getStringStatus(), visit.getDate(), visit.getTime(), visit.getProgressAssessment(), visit.getNotes(), visit.getClientId(), visit.getDoctorId(), visit.getSurgeryId());
   }
 
   public void update(Visit visit) {
     jdbcTemplate.update("UPDATE visits SET status = ?, date = ?, time = ?, progress_assesment = ?, notes = ?, client_id = ?, doctor_id = ?, surgery_id = ? WHERE visit_id = ?",
-      visit.getStatus(), visit.getDate(), visit.getTime(), visit.getProgressAssessment(), visit.getNotes(), visit.getClientId(), visit.getDoctorId(), visit.getSurgeryId(), visit.getVisitId());
+      visit.getStringStatus(), visit.getDate(), visit.getTime(), visit.getProgressAssessment(), visit.getNotes(), visit.getClientId(), visit.getDoctorId(), visit.getSurgeryId(), visit.getVisitId());
   }
 
   public void delete(int id) {

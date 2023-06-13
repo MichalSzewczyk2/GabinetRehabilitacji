@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MakeVisit</title>
+    <link th:href="@{/styles/adminStyle.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="topnav">
+    <a th:href="@{/user/visit}">&#8592; Go back</a>
+    <a class="active" style="float:right" th:href="@{/logout}">Log out</a>
+</div>
+
+<div>
+    <div th:if="${doctors != null}">
+        <table style="margin-top: 5rem" class="userTable">
+            <tr>
+                <th></th>
+                <th>Doctor</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr th:each="user, is: ${doctors}">
+                <td th:text="${user.name}"></td>
+                <td th:text="${user.surname}"></td>
+                <td th:text="${user.userType.name()}"></td>
+                <td class="buttons">
+                    <form th:action="@{/user/visit/doctor/{id}(id=${user.id})}" method="POST" th:object="${visit}">
+                        <input type="hidden" name="name" th:value="${visit.getVisitName()}"
+                               th:field="${visit.visitName}">
+                        <input type="hidden" name="date" th:value="${visit.getDate()}" th:field="${visit.date}">
+                        <button type="submit">Choose</button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div th:if="${doctor != null}">
+        <h1 th:text="${'Doctor: ' + doctor.getName() + ' ' + doctor.getSurname()}"></h1>
+        <table style="margin-top: 10rem" class="userTable">
+            <tr>
+                <th></th>
+                <th></th>
+                <th>Choose time of visit</th>
+                <th></th>
+            </tr>
+            <tr style="margin-top: 1rem; margin-bottom: 1rem" th:each="inter, is: ${availableHours}">
+                <td th:text="${inter.start}"></td>
+                <td th:text="${inter.end}"></td>
+                <td th:text="${inter.status}"></td>
+                <td th:if="${inter.getStatus().equals('Available')}" class="buttons">
+                    <form th:action="@{/user/visit/make/{start}(start=${inter.getStart().toString()})}" method="POST"
+                          th:object="${visit}">
+                        <input type="hidden" name="name" th:value="${visit.getVisitName()}"
+                               th:field="${visit.visitName}">
+                        <input type="hidden" name="date" th:value="${visit.getDate()}" th:field="${visit.date}">
+                        <input type="hidden" name="doctorId" th:value="${visit.getDoctorId()}"
+                               th:field="${visit.doctorId}">
+                        <input type="hidden" name="start" th:value="${inter.getStart()}" th:field="${visit.start}">
+                        <button type="submit">Choose</button>
+                    </form>
+                </td>
+                <td th:if="${inter.getStatus().equals('Reserved')}" class="buttons">
+                    <a style="visibility: hidden"></a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+</body>
+</html>

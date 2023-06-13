@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="EN">
+<head>
+    <meta charset="UTF-8">
+    <title>MainPage</title>
+    <link th:href="@{/styles/mainPage.css}" rel="stylesheet" />
+</head>
+<body>
+<div class="topnav">
+    <a href="#home">Home</a>
+    <a th:unless="${role == 'anonymousUser'}" id="logout" class="active" style="float:right" th:href="@{/logout}" >Log out</a>
+</div>
+
+<div class="middle">
+    <h1 class="centerTitle">Welcome in admin panel</h1>
+    <div class="buttons">
+        <a id="manageUsers" th:href="@{/admin/users}">Manage Users</a>
+        <a th:href="@{/admin/employees}">Manage Employees</a>
+        <a th:href="@{/admin/visits}">Manage Appointments</a>
+    </div>
+</div>
+
+<div class="footer">
+    <div class="socialMedia">
+        <img th:src="@{/images/facebook.png}" class="footerimage"/><a href="https://www.facebook.com/">FACEBOOK</a>
+        <img th:src="@{/images/instagram.png}" class="footerimage"/><a href="https://www.instagram.com/">INSTAGRAM</a>
+        <img th:src="@{/images/twitter.png}" class="footerimage"/><a href="https://twitter.com/home">TWITTER</a>
+        <img th:src="@{/images/telephone-call.png}" class="footerimage"/><a href="tel:+48123-456-789">CALL US!</a>
+    </div>
+    <div class="copyRight">
+        <p>Politechnika Krakowska © 2023</p>
+    </div>
+</div>
+</body>
+</html>

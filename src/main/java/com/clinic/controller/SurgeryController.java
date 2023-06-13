@@ -20,4 +20,14 @@ public class SurgeryController {
   public List<Surgery> getAllSurgeries(){
     return surgeryRepository.getAll();
   }
+
+  public Surgery getSurgeryByName(String name){
+    List<Surgery> all = surgeryRepository.getAll();
+    for(Surgery surgery : all){
+      if(surgery.getName().equals(name)){
+        return surgery;
+      }
+    }
+    return null;
+  }
 }

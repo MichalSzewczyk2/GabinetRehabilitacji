@@ -2,10 +2,14 @@ package com.clinic.controller;
 
 import com.clinic.dbRepository.UserRepository;
 import com.clinic.dbTables.User;
+import com.clinic.dbTables.UserType;
+import com.clinic.dbTables.WorkSchedule;
+import com.clinic.dto.UserScheduleDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +18,8 @@ public class UserController {
 
   @Autowired
   UserRepository userRepository;
+  @Autowired
+  WorkScheduleController workScheduleController;
 
   @GetMapping("/test")
   public int test() {
@@ -88,5 +94,29 @@ public class UserController {
 
   public void deleteUserWithId(int id){
     userRepository.delete(id);
+  }
+
+  public List<User> getDoctorsWithPermissionsWorkingOnDate(String permission, LocalDate date) {
+    List<User> result = new ArrayList<>();
+    List<User> users = userRepository.getAll();
+    for (User user : users){
+      if(permission.equals("MASSEUR")){
+        if(user.getUserType().equals(UserType.MASSEUR) || user.getUserType().equals(UserType.PHYSIOTHERAPIST)){
+          WorkSchedule schedule = workScheduleController.workingThatDay(user.getId(), date);
+          if(schedule != null){
+            result.add(user);
+          }
+        }
+      }
+      else if(permission.equals("PHYSIOTHERAPIST")){
+        if(user.getUserType().equals(UserType.PHYSIOTHERAPIST)){
+          WorkSchedule schedule = workScheduleController.workingThatDay(user.getId(), date);
+          if(schedule != null){
+            result.add(user);
+          }
+        }
+      }
+    }
+    return result;
   }
 }

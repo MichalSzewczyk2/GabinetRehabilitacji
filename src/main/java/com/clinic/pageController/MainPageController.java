@@ -28,6 +28,9 @@ public class MainPageController {
 
     model.addAttribute("role", role);
     System.out.println(role);
+    if(role.equals("masseur") || role.equals("physiotherapist")){
+      return "mainDoctorPage";
+    }
     if(role.equals("admin")){
       return "mainAdminPage";
     }
