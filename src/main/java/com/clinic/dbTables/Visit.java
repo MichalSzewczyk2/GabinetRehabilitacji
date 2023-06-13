@@ -20,6 +20,15 @@ public class Visit {
   private int doctorId;
   private int surgeryId;
 
+
+  public String getStringStatus(){
+    return switch (this.status){
+      case PENDING -> "PENDING";
+      case ENDED -> "ENDED";
+      case CANCELED -> "CANCELED";
+    };
+  }
+
   @NotNull
   @SneakyThrows
   public static Visit getVisitFromResultSet(ResultSet rs) {

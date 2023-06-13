@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Appointments</title>
+    <link th:href="@{/styles/adminStyle.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="topnav">
+    <a th:href="@{/main}">&#8592; Go back</a>
+    <a class="active" style="float:right" th:href="@{/logout}">Log out</a>
+</div>
+<div style="margin-top: 5rem" th:each="visit, is: ${visits}">
+    <a th:text="${'Status: ' + visit.getStatus()}"></a>
+    <br>
+    <a th:text="${'Visit type: ' + visit.getSurgery() + ' , date: ' + visit.getDate() + ' , time: ' + visit.getTime()}"></a>
+    <br>
+    <a th:text="${'Progress: '}"></a>
+    <br>
+    <a th:text="${visit.getProgress()}"></a>
+    <br>
+    <div class="buttons">
+        <a class="buttons" th:href="@{/user/remove/visit/{id}(id=${visit.id})}">Remove</a>
+    </div>
+</div>
+
+</body>
+</html>

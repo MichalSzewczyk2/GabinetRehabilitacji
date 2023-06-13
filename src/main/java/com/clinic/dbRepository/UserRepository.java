@@ -59,8 +59,6 @@ public class UserRepository {
   }
 
   public void update(User user) {
-    System.out.println("string: " + user.getStringType());
-    System.out.println("type: " + user.getUserType());
     jdbcTemplate.update("UPDATE users SET name = ?, surname = ?, address = ?, birth_date = ?, phone_number = ?, mail = ?, user_type = ?, login = ?, password = ? WHERE user_id = ?",
       user.getName(), user.getSurname(), user.getAddress(), user.getBirthDate(), user.getPhoneNumber(), user.getEmail(), user.getStringType(), user.getUsername(), CaesarCipher.encrypt(user.getPassword(), 9), user.getId());
   }

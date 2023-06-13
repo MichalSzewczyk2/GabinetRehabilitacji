@@ -16,7 +16,7 @@
         <div>
             <div style="margin-top: 5rem" class="form">
                 <label for="type">Choose visit type</label>
-                <select class="selectStyle" id="type" th:value="${visit.visitName}">
+                <select class="selectStyle" id="type" th:field="${visit.visitName}">
                     <option th:each="surg : ${surgeries}"
                             th:value="${surg.name}" th:text="${surg.name}"></option>
                 </select>
