@@ -159,6 +159,21 @@ public class AdminPageController {
     model.addAttribute("visit", visitController.getVisitById(numberId));
     return "changeVisitPage";
   }
+
+  @GetMapping("/admin/schedule/change/{id}")
+  public String changeSchedule(@PathVariable("id") String id, Model model){
+    WorkSchedule workSchedule = workScheduleController.getWorkScheduleBuId(Integer.parseInt(id));
+    model.addAttribute("schedule", workSchedule);
+    return "changeSchedulePage";
+  }
+
+  @GetMapping("/admin/schedule/delete/{id}")
+  public String deleteSchedule(@PathVariable("id") String id){
+    workScheduleController.deleteWorkSchedule(Integer.parseInt(id));
+    return "goBackToMain";
+  }
+
+
   public VisitDTO solveVisit(Visit visit){
     return getVisitDTO(visit, userController, surgeryController);
   }

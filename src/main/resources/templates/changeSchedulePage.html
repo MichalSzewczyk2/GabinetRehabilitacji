@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WorkSchedules</title>
+    <link th:href="@{/styles/adminStyle.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="topnav">
+    <a th:href="@{/doctor/workTime}">&#8592; Go back</a>
+    <a class="active" style="float:right" th:href="@{/logout}">Log out</a>
+</div>
+<h1>Change work schedule</h1>
+<form th:action="@{/doctor/work/new}" method="POST" th:object="${schedule}">
+    <div class="form">
+        <label for="date">Date</label>
+        <input type="date" name="date" id="date" th:value="${schedule.getDate()}" th:field="${schedule.date}">
+    </div>
+    <div class="form">
+        <label for="start">Start time</label>
+        <input type="time" name="start" id="start" th:value="${schedule.getStartTime()}" th:field="${schedule.startTime}">
+    </div>
+    <div class="form">
+        <label for="end">Start time</label>
+        <input type="time" name="end" id="end" th:value="${schedule.getEndTime()}" th:field="${schedule.endTime}">
+    </div>
+    <div class="buttons">
+        <button type="submit">Change</button>
+    </div>
+</form>
+</body>
+</html>

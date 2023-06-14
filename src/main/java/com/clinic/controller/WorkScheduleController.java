@@ -33,4 +33,16 @@ public class WorkScheduleController {
     }
     return null;
   }
+
+  public void addWorkSchedule(WorkSchedule schedule){
+    workScheduleRepository.add(schedule);
+  }
+
+  public WorkSchedule getWorkScheduleBuId(int id){
+    return workScheduleRepository.getById(id);
+  }
+
+  public void deleteWorkSchedule(int id){
+    workScheduleRepository.delete(id);
+  }
 }

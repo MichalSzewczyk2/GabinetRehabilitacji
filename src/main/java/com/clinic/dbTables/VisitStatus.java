@@ -13,7 +13,7 @@ public enum VisitStatus {
     return switch (visitStatus.toLowerCase()) {
       case "pending" -> VisitStatus.PENDING;
       case "ended" -> VisitStatus.ENDED;
-      case "cancelled" -> VisitStatus.CANCELED;
+      case "canceled" -> VisitStatus.CANCELED;
       default -> null;
     };
   }
