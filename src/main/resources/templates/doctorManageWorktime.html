@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WorkSchedules</title>
+    <link th:href="@{/styles/adminStyle.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="topnav">
+    <a th:href="@{/main}">&#8592; Go back</a>
+    <a class="active" style="float:right" th:href="@{/logout}">Log out</a>
+</div>
+<div style="margin-bottom: 4rem; margin-top: 4rem" class="buttons">
+    <a th:href="@{/doctor/work/new}">Add new work schedule</a>
+</div>
+<div>
+    <table class="userTable">
+        <tr>
+            <th>Date</th>
+            <th>Start time</th>
+            <th>End time</th>
+            <th></th>
+        </tr>
+        <tr th:each="work, is: ${workSchedules}">
+            <td th:text="${work.date}"></td>
+            <td th:text="${work.startTime}"></td>
+            <td th:text="${work.endTime}"></td>
+            <td class="buttons">
+                <a th:href="@{/doctor/change/schedule/{id}(id=${work.scheduleId})}">Change</a>
+                <a th:href="@{/doctor/delete/schedule/{id}(id=${work.scheduleId})}">Delete</a>
+            </td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

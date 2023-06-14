@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Visits</title>
+  <link th:href="@{/styles/adminStyle.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="topnav">
+  <a th:href="@{/doctor/visits}">&#8592; Go back</a>
+  <a class="active" style="float:right" th:href="@{/logout}">Log out</a>
+</div>
+<div class="middle">
+  <form action="/doctor/fill/visit" method="post" th:object="${visit}">
+    <div class="form">
+      <label for="progress">Progress assessment</label>
+      <input type="text" id="progress" th:value="${visit.getProgressAssessment()}" th:field="${visit.progressAssessment}">
+    </div>
+    <div class="form">
+      <label for="notes">Notes</label>
+      <input type="text" id="notes" th:value="${visit.getNotes()}" th:field="${visit.notes}">
+    </div>
+    <div class="form">
+      <label for="status">Status</label>
+      <select class="selectStyle" id="status" th:field="*{status}">
+        <option th:each="status : ${T(com.clinic.dbTables.VisitStatus).values()}"
+                th:value="${status}" th:text="${status}"></option>
+      </select>
+    </div>
+    <input type="hidden" id="id" th:value="${visit.getVisitId()}" th:field="${visit.visitId}">
+    <div class="buttons">
+      <button type="submit">Change</button>
+    </div>
+
+  </form>
+</div>
+
+</body>
+</html>

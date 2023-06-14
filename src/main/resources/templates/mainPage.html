@@ -15,7 +15,7 @@
     <a th:if="${role == 'client'}" style="float:right" th:href="@{/user/profile}">My profile</a>
     <a th:if="${role == 'client'}" style="float:right" th:href="@{/user/appointments}">My appointments</a>
 </div>
-<div class="middle">
+<div style="margin-bottom: 10rem" class="middle">
     <h1 class="centerTitle" id="title">Welcome</h1>
     <div class="buttons">
         <a th:if="${role == 'client'}" th:href="@{/user/visit}">Make an appointment</a>

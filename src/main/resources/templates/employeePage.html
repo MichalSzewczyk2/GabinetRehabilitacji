@@ -47,8 +47,8 @@
   <tr th:each="schedule, is: ${schedules}">
     <td th:text="${schedule.date}"></td>
     <td class="buttons">
-      <a th:href="@{/admin/visit/change/{id}(id=${schedule.scheduleId})}">Change</a>
-      <a th:href="@{/admin/visit/delete/{id}(id=${schedule.scheduleId})}">Delete</a>
+      <a th:href="@{/admin/schedule/change/{id}(id=${schedule.scheduleId})}">Change</a>
+      <a th:href="@{/admin/schedule/delete/{id}(id=${schedule.scheduleId})}">Delete</a>
     </td>
   </tr>
 </table>

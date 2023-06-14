@@ -21,7 +21,7 @@ public class VisitController {
 
   public List<Visit> getAllUserVisits(int userId) {
     List<Visit> visits = visitRepository.getAll();
-    List<Visit> result = new ArrayList<Visit>();
+    List<Visit> result = new ArrayList<>();
     for (Visit visit : visits) {
       if(visit.getClientId() == userId){
         result.add(visit);
@@ -58,5 +58,20 @@ public class VisitController {
 
   public void deleteVisitById(int id){
     visitRepository.delete(id);
+  }
+
+  public List<Visit> getDoctorVisits(int id){
+    List<Visit> result = new ArrayList<>();
+    List<Visit> visits = visitRepository.getAll();
+    for(Visit visit : visits){
+      if(visit.getDoctorId() == id){
+        result.add(visit);
+      }
+    }
+    return result;
+  }
+
+  public void updateVisit(Visit visit){
+    visitRepository.update(visit);
   }
 }
